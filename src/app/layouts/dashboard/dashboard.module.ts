@@ -9,12 +9,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { UsersModule } from './pages/users/users.module';
-import { UsersComponent } from './pages/users/users.component';
+import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -23,7 +23,8 @@ import { UsersComponent } from './pages/users/users.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    UsersModule
+    UsersModule,
+    PipesYDirectivasModule
   ],
   exports: [
     DashboardComponent

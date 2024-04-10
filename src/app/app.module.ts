@@ -5,19 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { DashboardModule } from './layouts/dashboard/dashboard.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DashboardModule
+    DashboardModule,
   ],
   providers: [
     provideAnimationsAsync()

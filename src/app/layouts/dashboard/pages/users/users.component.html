@@ -18,6 +18,13 @@
     </ng-container>
   
 
+     <!-- Name Column -->
+  <ng-container matColumnDef="nombreCompleto">
+    <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
+    <td mat-cell *matCellDef="let element"> {{ element.firstName | fullName: element.lastName }} </td>
+  </ng-container>
+
+    
     <!-- Name Column -->
     <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
@@ -28,7 +35,7 @@
     <!-- Apellido Column -->
     <ng-container matColumnDef="lastName">
       <th mat-header-cell *matHeaderCellDef> Apellido </th>
-      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.lastName }} </td>
     </ng-container>
   
 

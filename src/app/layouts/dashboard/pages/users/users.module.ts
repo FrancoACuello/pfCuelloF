@@ -6,17 +6,19 @@ import { UsersComponent } from './users.component';
 
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 import { SharedModule } from '../../../../shared/shared.module';
+import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas.module';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
-    UserDialogComponent
+    UserDialogComponent,
   ],
   imports: [
     CommonModule,
     UsersRoutingModule,
-    SharedModule
+    SharedModule,
+    PipesYDirectivasModule
   ],
   exports:[UsersComponent]
 })

@@ -10,7 +10,7 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
 })
 
 export class UsersComponent {
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email','role', 'createdAt','actionDelete','actionEdit'];
+  displayedColumns: string[] = ['id','nombreCompleto', 'firstName', 'lastName', 'email','role', 'createdAt','actionDelete','actionEdit'];
   
 
   users: IUser[]= [
