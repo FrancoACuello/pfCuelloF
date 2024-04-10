@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { DashboardComponent } from './layout/dashboard/dashboard.component';
-import { DashboardModule } from './layout/dashboard/dashboard.module';
+import { DashboardComponent } from './layouts/dashboard/dashboard.component';
+import { DashboardModule } from './layouts/dashboard/dashboard.module';
 
 
 @NgModule({

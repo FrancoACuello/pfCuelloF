@@ -8,6 +8,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { UsersModule } from './pages/users/users.module';
+import { UsersComponent } from './pages/users/users.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    UsersModule
   ],
   exports: [
     DashboardComponent

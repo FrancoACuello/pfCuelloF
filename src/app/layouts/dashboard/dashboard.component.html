@@ -2,7 +2,11 @@
 
 
  <!-- SIDEBAR -->
-    <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-drawer 
+    [opened]="!isMobile()"
+    #drawer 
+    class="example-sidenav" 
+    [mode]=" isMobile() ? 'over' : 'side'">
       <p>Auto-resizing sidenav</p>
       @if (showFiller) {
         <p>Lorem, ipsum dolor sit amet consectetur.</p>
@@ -26,13 +30,17 @@
             </button>
             <span>My App</span>
             <span class="example-spacer"></span>
-            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
               <mat-icon>favorite</mat-icon>
             </button>
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
               <mat-icon>share</mat-icon>
-            </button>
+            </button> -->
           </mat-toolbar>
+
+    <main style="padding: 1rem;">
+        <app-users/>
+    </main>
 <!--TOOLBAR SUPERIOR-->
 
       <!-- <button type="button" mat-button (click)="drawer.toggle()">
