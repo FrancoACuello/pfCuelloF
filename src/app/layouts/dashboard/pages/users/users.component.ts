@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IUser } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+import Swal from 'sweetalert2';
 
+ 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -18,7 +20,7 @@ export class UsersComponent {
       id: 1,
       firstName: 'Franco',
       lastName: 'Cuello',
-      email: 'franco.cuello@gmail.com',
+      email: 'Franco.cuello@gmail.com',
       role: 'ADMIN',
       createdAt: new Date()
   },
@@ -28,6 +30,30 @@ export class UsersComponent {
       lastName: 'Gaido',
       email: 'Luca.Gaido@gmail.com',
       role: 'USER',
+      createdAt: new Date()
+  },
+    {
+      id: 3,
+      firstName: 'Martina',
+      lastName: 'Martinangeli',
+      email: 'Martina.martinangeli@gmail.com',
+      role: 'USER',
+      createdAt: new Date()
+  },
+    {
+      id: 4,
+      firstName: 'Gaston',
+      lastName: 'Lopez',
+      email: 'Gaston.Lopez@gmail.com',
+      role: 'USER',
+      createdAt: new Date()
+  },
+    {
+      id: 5,
+      firstName: 'Pablo',
+      lastName: 'Rodriguez',
+      email: 'Pablo.Rodriguez@gmail.com',
+      role: 'ADMIN',
       createdAt: new Date()
   },
 ]
@@ -58,11 +84,34 @@ openDialog(editingUser?: IUser): void {
   });
 }
 
-onDeleteUser(id:number): void{
-  if (confirm('Esta seguro?')) {
-  this.users = this.users.filter((u) => u.id != id)
-}};
+// onDeleteUser(id:number): void{
+//   if (confirm('Esta seguro?')) {
+//   this.users = this.users.filter((u) => u.id != id)
+// }};
 
+
+onDeleteUser(id: number): void {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: '¡No podrás revertir esto!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, eliminarlo!',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Si el usuario confirma, eliminar el usuario
+      this.users = this.users.filter((u) => u.id != id);
+      Swal.fire(
+        'Eliminado!',
+        'El usuario ha sido eliminado.',
+        'success'
+      );
+    }
+  });
+}
 
 
 }
