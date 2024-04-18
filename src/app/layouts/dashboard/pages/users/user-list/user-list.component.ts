@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 import { IUser } from '../models';
 import { AuthService } from '../../../../../core/services/auth.service';
 
@@ -14,7 +14,18 @@ export class UserListComponent implements OnDestroy {
   authUser$: Observable<IUser | null>;
 
   constructor(private authService: AuthService) {
-    this.authUser$ = this.authService.authUser$;
+    this.authUser$ = this.authService.authUser$.pipe(
+      map((user: IUser | null) => {
+        if (user) {
+          return {
+            ...user,
+            firstName: user.firstName.toUpperCase(),
+            lastName: user.lastName.toUpperCase()
+          };
+        }
+        return null;
+      })
+    );
   }
 
   ngOnDestroy(): void {
