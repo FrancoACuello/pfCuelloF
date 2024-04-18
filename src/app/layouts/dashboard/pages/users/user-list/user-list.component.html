@@ -1,0 +1,9 @@
+<div *ngIf="authUser$ | async as authUser">
+    <p>Usuario autenticado:</p>
+    <p>Nombre: {{ authUser.firstName }}</p>
+    <p>Apellido: {{ authUser.lastName }}</p>
+    <p>Email: {{ authUser.email }}</p>
+    <p>Rol: {{ authUser.role }}</p>
+  </div>
+  
+ 

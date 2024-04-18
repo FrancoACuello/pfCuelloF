@@ -1,54 +1,67 @@
 <mat-drawer-container class="example-container" autosize>
 
-
- <!-- SIDEBAR -->
-    <mat-drawer 
+  <!-- SIDEBAR -->
+  <mat-drawer 
     [opened]="!isMobile()"
     #drawer 
     class="example-sidenav" 
-    [mode]=" isMobile() ? 'over' : 'side'">
-      <p>Auto-resizing sidenav</p>
-      @if (showFiller) {
-        <p>Lorem, ipsum dolor sit amet consectetur.</p>
-      }
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
-      </button>
-    </mat-drawer>
+    [mode]="isMobile() ? 'over' : 'side'">
+  
+    <!-- Barra lateral -->
+    <mat-toolbar>
+      <span>Menú</span>
+    </mat-toolbar>
+
+    <!-- Botones -->
+    <mat-nav-list>
+      <a mat-list-item routerLink="/inicio" (click)="drawer.close()">Inicio</a>
+      <a mat-list-item routerLink="/usuarios" (click)="drawer.close()">Usuarios</a>
+      <a mat-list-item routerLink="/clases" (click)="drawer.close()">Clases</a>
+    </mat-nav-list>
+  </mat-drawer>
   <!-- SIDEBAR -->
 
+  <!-- CONTENIDO A LA DERECHA -->
+  <div class="example-sidenav-content">
 
-<!-- CONTENIDO A LA DERECHA -->
-    <div class="example-sidenav-content">
-
-<!--TOOLBAR SUPERIOR-->
-        <mat-toolbar color="primary">
-            <button
-            (click)="drawer.toggle()"
-            mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-              <mat-icon>menu</mat-icon>
-            </button>
-            <span appFontSize>Universidad FC</span>
-            <span class="example-spacer"></span>
-            <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-              <mat-icon>favorite</mat-icon>
-            </button>
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-              <mat-icon>share</mat-icon>
-            </button> -->
-          </mat-toolbar>
-
-    <main style="padding: 1rem;">
-        <app-users/>
-    </main>
-<!--TOOLBAR SUPERIOR-->
-
-      <!-- <button type="button" mat-button (click)="drawer.toggle()">
-        Toggle sidenav
-      </button> -->
-    </div>
+    <!-- TOOLBAR SUPERIOR -->
+    <mat-toolbar color="primary">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <button
+          (click)="drawer.toggle()"
+          mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span appFontSize>Universidad FC</span>
+        <span class="example-spacer"></span>
+        <div *ngIf="authUser$ | async as user">
+          <div>{{ user?.firstName }}</div>
+        </div>
+      </div>
+    </mat-toolbar>
     
-<!-- CONTENIDO A LA DERECHA -->
+    <main style="padding: 1rem;">
+      <div>
+        <button style="margin-left: 2vh;" (click)="login()" color="primary" mat-flat-button>
+          Iniciar sesión
+        </button>
+        <button style="margin-left: 2vh;" (click)="logout()" color="warn" mat-flat-button>
+          Cerrar sesión
+        </button>
+      </div>
+    
+      <button mat-raised-button style="margin: 2vh;" (click)="toggleComponent()">
+        Alternar componente
+      </button>
+    
+      <div *ngIf="isLoading">
+        Cargando...
+      </div>
+      
+      <app-user-list *ngIf="mostrarComponent"></app-user-list>
+    </main>
+        
+  </div>
+  <!-- CONTENIDO A LA DERECHA -->
 
 </mat-drawer-container>
-  

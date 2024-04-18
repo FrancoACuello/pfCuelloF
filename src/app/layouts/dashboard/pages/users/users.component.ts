@@ -1,17 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IUser } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 import Swal from 'sweetalert2';
-
+import {
+  BehaviorSubject,
+  delay,
+  filter,
+  first,
+  forkJoin,
+  map,
+  Observable,
+  of,
+  skip,
+  Subject,
+  Subscription,
+  take,
+  takeUntil,
+  tap,
+} from 'rxjs';
  
+
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss'
 })
 
-export class UsersComponent {
+export class UsersComponent implements OnInit {
+  ngOnInit(): void {
+    const obtenerUsuarios$ = new Observable((observer) => {
+      setInterval(() => {
+
+      }, 2000)
+    });
+    
+  }
   displayedColumns: string[] = ['id','nombreCompleto', 'firstName', 'lastName', 'email','role', 'createdAt','actionDelete','actionEdit'];
   
 
@@ -83,12 +108,6 @@ openDialog(editingUser?: IUser): void {
     },
   });
 }
-
-// onDeleteUser(id:number): void{
-//   if (confirm('Esta seguro?')) {
-//   this.users = this.users.filter((u) => u.id != id)
-// }};
-
 
 onDeleteUser(id: number): void {
   Swal.fire({

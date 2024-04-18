@@ -7,6 +7,7 @@ import { UsersComponent } from './users.component';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 import { SharedModule } from '../../../../shared/shared.module';
 import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas.module';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas
     CommonModule,
     UsersRoutingModule,
     SharedModule,
-    PipesYDirectivasModule
+    PipesYDirectivasModule,
   ],
   exports:[UsersComponent]
 })

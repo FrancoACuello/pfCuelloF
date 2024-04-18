@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { DashboardModule } from './layouts/dashboard/dashboard.module';
+import { UserListModule } from './layouts/dashboard/pages/users/user-list/user-list.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { DashboardModule } from './layouts/dashboard/dashboard.module';
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
+    UserListModule
   ],
   providers: [
     provideAnimationsAsync()

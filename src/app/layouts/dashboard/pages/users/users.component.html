@@ -1,15 +1,11 @@
 <div class="d-flex justify-content-end mb-3">
-    <button appFontSize (click)="openDialog()" mat-button color="primary">
+    <button (click)="openDialog()" mat-button color="primary">
         Crear Usuuario
     </button>
 </div>
 
 
 <table mat-table [dataSource]="users" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
 
     <!-- Id Column -->
     <ng-container matColumnDef="id">
@@ -86,4 +82,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   
+  
+
+  
+
   
