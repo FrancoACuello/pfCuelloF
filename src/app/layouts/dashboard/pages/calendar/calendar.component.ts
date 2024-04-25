@@ -15,8 +15,7 @@ export class CalendarComponent {
   // Método para manejar la selección de fechas
   onDateSelected(date: Date): void {
     this.selectedDate = date;
-    // Aquí podrías cargar los eventos del día seleccionado desde tu servicio o base de datos
-    // Por ahora, solo usaremos una lista de eventos ficticios
+    
     this.events = [
       'Meeting at 10:00 AM',
       'Lunch with friends at 1:00 PM',
