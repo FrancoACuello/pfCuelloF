@@ -1,0 +1,24 @@
+.custom-card {
+  width: 50rem; 
+  height: 10rem; 
+  border-radius: 1rem;
+  margin: 0.5vh;
+  border: black 10vh
+}
+
+.add-button {
+  margin:0.5vh;
+}
+
+.course-form {
+  margin: 20px; /* Margen exterior */
+}
+
+mat-card {
+  width: 400px; /* Ancho del card */
+}
+
+mat-form-field {
+  width: 100%; /* Ancho completo del formulario */
+  margin-bottom: 20px; /* Espacio entre campos */
+}

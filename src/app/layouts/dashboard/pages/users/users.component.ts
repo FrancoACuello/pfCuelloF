@@ -19,71 +19,51 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
- 
+ import { UsersService } from './users.service';
 
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrl: './users.component.scss'
+  styleUrls: ['./users.component.scss', './user-detail/user-detail.component.scss'],
 })
 
 export class UsersComponent implements OnInit {
-  ngOnInit(): void {
-    const obtenerUsuarios$ = new Observable((observer) => {
-      setInterval(() => {
-
-      }, 2000)
-    });
-    
-  }
-  displayedColumns: string[] = ['id','nombreCompleto', 'firstName', 'lastName', 'email','role', 'createdAt','actionDelete','actionEdit'];
+  loading = true;
+  users: IUser[] = [];
+  displayedColumns: string[] = ['id',
+  'nombreCompleto',
+   'firstName',
+    'lastName',
+    'email',
+    'role',
+     'createdAt',
+     'actions'];
   
 
-  users: IUser[]= [
-    {
-      id: 1,
-      firstName: 'Franco',
-      lastName: 'Cuello',
-      email: 'Franco.cuello@gmail.com',
-      role: 'ADMIN',
-      createdAt: new Date()
-  },
-    {
-      id: 2,
-      firstName: 'Luca',
-      lastName: 'Gaido',
-      email: 'Luca.Gaido@gmail.com',
-      role: 'USER',
-      createdAt: new Date()
-  },
-    {
-      id: 3,
-      firstName: 'Martina',
-      lastName: 'Martinangeli',
-      email: 'Martina.martinangeli@gmail.com',
-      role: 'USER',
-      createdAt: new Date()
-  },
-    {
-      id: 4,
-      firstName: 'Gaston',
-      lastName: 'Lopez',
-      email: 'Gaston.Lopez@gmail.com',
-      role: 'USER',
-      createdAt: new Date()
-  },
-    {
-      id: 5,
-      firstName: 'Pablo',
-      lastName: 'Rodriguez',
-      email: 'Pablo.Rodriguez@gmail.com',
-      role: 'ADMIN',
-      createdAt: new Date()
-  },
-]
+constructor(
+  private matDialog : MatDialog,
+  private userService: UsersService
+) {}
 
-constructor(private matDialog : MatDialog) {}
+ngOnInit(): void {
+  this.loading = true;
+  this.userService.getUsers().subscribe({
+    next: (users) => {
+      console.log('next: ', users);
+      this.users = users;
+    },
+    error: (err) => {
+      console.log('error: ', err);
+      Swal.fire('Error', 'Ocurrio un error', 'error');
+    },
+    complete: () => {
+      console.log('complete');
+      this.loading = false;
+    },
+  });
+}
+
 
 openDialog(editingUser?: IUser): void {
   this.matDialog

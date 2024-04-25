@@ -1,0 +1,21 @@
+<mat-calendar (selectedChange)="onDateSelected($event)"></mat-calendar>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-card *ngIf="selectedDate">
+  <mat-card-title>Events for {{ selectedDate | date }}</mat-card-title>
+  <mat-card-content>
+    <ul>
+      <li *ngFor="let event of events">{{ event }}</li>
+    </ul>
+  </mat-card-content>
+</mat-card>
+
+<mat-form-field>
+  <input matInput placeholder="Add event" #eventInput>
+  <button mat-button (click)="addEvent(eventInput.value)">Add</button>
+</mat-form-field>

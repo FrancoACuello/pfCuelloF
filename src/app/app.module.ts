@@ -7,6 +7,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { DashboardModule } from './layouts/dashboard/dashboard.module';
 import { UserListModule } from './layouts/dashboard/pages/users/user-list/user-list.module';
+import { RouterModule, Route } from '@angular/router';
+import { CoursesModule } from './layouts/dashboard/pages/courses/courses.module';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 
 
 @NgModule({
@@ -15,7 +19,9 @@ import { UserListModule } from './layouts/dashboard/pages/users/user-list/user-l
     BrowserModule,
     AppRoutingModule,
     DashboardModule,
-    UserListModule
+    UserListModule,
+   CoursesModule,
+   MatDatepickerModule,
   ],
   providers: [
     provideAnimationsAsync()

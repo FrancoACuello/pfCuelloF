@@ -8,15 +8,17 @@
     [mode]="isMobile() ? 'over' : 'side'">
   
     <!-- Barra lateral -->
-    <mat-toolbar>
+    <mat-toolbar color="primary">
       <span>Menú</span>
     </mat-toolbar>
 
     <!-- Botones -->
     <mat-nav-list>
-      <a mat-list-item routerLink="/inicio" (click)="drawer.close()">Inicio</a>
-      <a mat-list-item routerLink="/usuarios" (click)="drawer.close()">Usuarios</a>
-      <a mat-list-item routerLink="/clases" (click)="drawer.close()">Clases</a>
+      <a mat-list-item routerLink="home" >Inicio</a>
+      <a mat-list-item routerLink="users" >Usuarios</a>
+      <a mat-list-item routerLink="courses" >Cursos</a>
+      <a mat-list-item routerLink="calendar" >Calendar</a>
+      <a (click)="logout()" mat-list-item>Cerrar sesión</a>
     </mat-nav-list>
   </mat-drawer>
   <!-- SIDEBAR -->
@@ -26,39 +28,33 @@
 
     <!-- TOOLBAR SUPERIOR -->
     <mat-toolbar color="primary">
-      <div class="d-flex justify-content-between align-items-center w-100">
-        <button
-          (click)="drawer.toggle()"
-          mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span appFontSize>Universidad FC</span>
-        <span class="example-spacer"></span>
-        <div *ngIf="authUser$ | async as user">
-          <div>{{ user?.firstName }}</div>
+      <div class="container-fluid">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-auto">
+            <button
+              (click)="drawer.toggle()"
+              mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+              <mat-icon>menu</mat-icon>
+            </button>
+          </div>
+          <div class="col-auto">
+            <span appFontSize>Escuela</span>
+          </div>
+          <div class="col"></div>
+          <div *ngIf="authUser$ | async as user" class="col-auto">
+            <div>{{ user?.firstName }}</div>
+          </div>
         </div>
       </div>
     </mat-toolbar>
     
-    <main style="padding: 1rem;">
-      <div>
-        <button style="margin-left: 2vh;" (click)="login()" color="primary" mat-flat-button>
-          Iniciar sesión
-        </button>
-        <button style="margin-left: 2vh;" (click)="logout()" color="warn" mat-flat-button>
-          Cerrar sesión
-        </button>
-      </div>
-    
-      <button mat-raised-button style="margin: 2vh;" (click)="toggleComponent()">
-        Alternar componente
-      </button>
-    
-      <div *ngIf="isLoading">
-        Cargando...
-      </div>
+    <main class="container-fluid p-3">
+      <div *ngIf="isLoading" class="alert alert-info">Cargando...</div>
       
       <app-user-list *ngIf="mostrarComponent"></app-user-list>
+
+      <router-outlet></router-outlet>
+
     </main>
         
   </div>

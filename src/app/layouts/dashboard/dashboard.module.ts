@@ -12,6 +12,11 @@ import { UsersModule } from './pages/users/users.module';
 import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
 import { SharedModule } from '../../shared/shared.module';
 import { UserListModule } from './pages/users/user-list/user-list.module'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CoursesModule } from './pages/courses/courses.module';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { CalendarModule } from './pages/calendar/calendar.module';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +32,11 @@ import { UserListModule } from './pages/users/user-list/user-list.module';
     UsersModule,
     PipesYDirectivasModule,
     SharedModule,
-    UserListModule
+    UserListModule,
+    MatProgressSpinnerModule,
+    CoursesModule,
+    CalendarModule
+    
   ],
   exports: [
     DashboardComponent
