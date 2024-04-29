@@ -1,21 +1,28 @@
-<mat-calendar (selectedChange)="onDateSelected($event)"></mat-calendar>
+<div class="container">
+  <mat-form-field>
+    <mat-label>Clase:</mat-label>
+    <mat-select [(ngModel)]="newEvent.class">
+      <mat-option value="Angular">Angular</mat-option>
+      <mat-option value="React">React</mat-option>
+      <mat-option value="Vue">Vue</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Horario:</mat-label>
+    <mat-select [(ngModel)]="newEvent.time">
+      <mat-option *ngFor="let time of timeOptions" [value]="time">{{ time }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="createEvent(selectedDate, eventName)">Guardar</button>
+</div>
 
-<mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+<div class="event-list">
+  <h3>Eventos del día</h3>
+  <ul>
+    <li *ngFor="let event of events">{{ event }}</li>
+  </ul>
+</div>
 
-<mat-card *ngIf="selectedDate">
-  <mat-card-title>Events for {{ selectedDate | date }}</mat-card-title>
-  <mat-card-content>
-    <ul>
-      <li *ngFor="let event of events">{{ event }}</li>
-    </ul>
-  </mat-card-content>
-</mat-card>
-
-<mat-form-field>
-  <input matInput placeholder="Add event" #eventInput>
-  <button mat-button (click)="addEvent(eventInput.value)">Add</button>
-</mat-form-field>
+<div class="calendar-container">
+  <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelected($event)"></mat-calendar>
+</div>

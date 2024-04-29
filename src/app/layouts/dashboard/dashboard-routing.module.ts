@@ -24,9 +24,9 @@ const routes: Routes = [
   {
     path: 'calendar',
     loadChildren: () =>
-      import('./pages/calendar/calendar.module').then((m) => m.CalendarModule),
+      import('./pages/calendar/calendar.module').then((m) => m.CalendarModule)
   },
- 
+
   {
     path: '',
     pathMatch: 'full',

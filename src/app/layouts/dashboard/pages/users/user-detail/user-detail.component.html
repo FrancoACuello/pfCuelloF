@@ -1,12 +1,11 @@
-<!-- user-detail.component.html -->
 
 <ng-container *ngIf="loading">
-  <!-- Muestra el spinner de carga -->
+
   <mat-spinner diameter="50"></mat-spinner>
 </ng-container>
 
 <ng-container *ngIf="!loading">
-  <!-- Muestra los detalles del usuario -->
+
   <div class="user-details">
     <h1>Detalles del usuario:</h1>
     <mat-card *ngIf="users$ | async as user">

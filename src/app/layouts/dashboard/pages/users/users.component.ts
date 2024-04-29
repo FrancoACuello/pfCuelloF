@@ -76,10 +76,8 @@ openDialog(editingUser?: IUser): void {
       if (result) {
 
         if (editingUser) {
-          //Actualizar el usuario en array 
           this.users = this.users.map((u) => u.id === editingUser.id ? {...u, ...result} : u);
         } else {
-          //Logica Crear usuario
           result.id = new Date().getTime().toString().substring(0, 3);
           result.createdAt = new Date();
           this.users = [...this.users,result];
@@ -101,7 +99,6 @@ onDeleteUser(id: number): void {
     cancelButtonText: 'Cancelar'
   }).then((result) => {
     if (result.isConfirmed) {
-      // Si el usuario confirma, eliminar el usuario
       this.users = this.users.filter((u) => u.id != id);
       Swal.fire(
         'Eliminado!',

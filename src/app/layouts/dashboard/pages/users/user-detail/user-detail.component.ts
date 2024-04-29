@@ -11,8 +11,8 @@ import { IUser } from '../models';
 })
 export class UserDetailComponent {
 
-  loading = true; // Variable para controlar la carga
-  users$: Observable<IUser | undefined> | undefined; // Modificamos aquí
+  loading = true; 
+  users$: Observable<IUser | undefined> | undefined; 
 
   constructor(private usersService: UsersService,
      private router : Router,
@@ -24,21 +24,21 @@ export class UserDetailComponent {
     }
   
     loadData(): void {
-      const userId = Number(this.route.snapshot.paramMap.get('id')); // Obtener el ID del usuario de la URL
+      const userId = Number(this.route.snapshot.paramMap.get('id')); 
       if (userId) {
-        this.users$ = this.usersService.getUserById(userId); // Cargar el usuario por su ID
+        this.users$ = this.usersService.getUserById(userId); 
         this.users$.subscribe({
           next: () => {
-            this.loading = false; // Cambiar el estado de carga cuando los datos estén cargados
+            this.loading = false; 
           },
           error: (error) => {
             console.error('Error loading user:', error);
-            this.loading = false; // Cambiar el estado de carga en caso de error también
+            this.loading = false; 
           }
         });
       } else {
         console.error('User ID not found in URL');
-        this.loading = false; // Cambiar el estado de carga en caso de error
+        this.loading = false; 
       }
     }
   

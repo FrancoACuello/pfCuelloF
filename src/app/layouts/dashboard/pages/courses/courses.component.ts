@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
+
 export class CoursesComponent implements OnInit {
   courses: Course[] = [];
   selectedCourse: Course | undefined;

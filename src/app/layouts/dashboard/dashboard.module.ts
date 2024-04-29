@@ -14,13 +14,14 @@ import { SharedModule } from '../../shared/shared.module';
 import { UserListModule } from './pages/users/user-list/user-list.module'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CoursesModule } from './pages/courses/courses.module';
-import { CalendarComponent } from './pages/calendar/calendar.component';
 import { CalendarModule } from './pages/calendar/calendar.module';
+import { CourseUserComponent } from './pages/course-user/course-user.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
+    CourseUserComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +36,7 @@ import { CalendarModule } from './pages/calendar/calendar.module';
     UserListModule,
     MatProgressSpinnerModule,
     CoursesModule,
-    CalendarModule
+    CalendarModule,
     
   ],
   exports: [

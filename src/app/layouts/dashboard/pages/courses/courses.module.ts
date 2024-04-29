@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CoursesComponent } from './courses.component';
 import { CoursesRoutingModule } from './courses-routing.module';
 import { MatListModule } from '@angular/material/list'
-import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { FormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [ CoursesComponent],
@@ -23,7 +23,6 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule
     CoursesRoutingModule,
     MatListModule,
     FormsModule
-    
   ],
   exports: [CoursesComponent]
 })
