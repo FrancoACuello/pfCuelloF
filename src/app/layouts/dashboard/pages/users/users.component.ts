@@ -20,6 +20,7 @@ import {
   tap,
 } from 'rxjs';
  import { UsersService } from './users.service';
+ import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -42,6 +43,7 @@ export class UsersComponent implements OnInit {
   
 
 constructor(
+  private httpClient : HttpClient,
   private matDialog : MatDialog,
   private userService: UsersService
 ) {}
@@ -78,9 +80,14 @@ openDialog(editingUser?: IUser): void {
         if (editingUser) {
           this.users = this.users.map((u) => u.id === editingUser.id ? {...u, ...result} : u);
         } else {
-          result.id = new Date().getTime().toString().substring(0, 3);
+          this.userService.createUser(result).subscribe({
+            next:(userCreated) => {
+              this.users = [...this.users,userCreated]
+            }
+          })
+          // result.id = new Date().getTime().toString().substring(0, 3);
           result.createdAt = new Date();
-          this.users = [...this.users,result];
+          // this.users = [...this.users,result];
         }
       }
     },

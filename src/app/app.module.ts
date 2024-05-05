@@ -10,7 +10,7 @@ import { UserListModule } from './layouts/dashboard/pages/users/user-list/user-l
 import { RouterModule, Route } from '@angular/router';
 import { CoursesModule } from './layouts/dashboard/pages/courses/courses.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,6 +22,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     UserListModule,
    CoursesModule,
    MatDatepickerModule,
+   HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()
