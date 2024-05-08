@@ -11,6 +11,7 @@ import { RouterModule, Route } from '@angular/router';
 import { CoursesModule } from './layouts/dashboard/pages/courses/courses.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthRoutingModule } from './layouts/auth/auth-routing.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     UserListModule,
    CoursesModule,
    MatDatepickerModule,
-   HttpClientModule
+   HttpClientModule,
+   AuthRoutingModule
   ],
   providers: [
     provideAnimationsAsync()

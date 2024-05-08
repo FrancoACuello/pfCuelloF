@@ -3,7 +3,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { IUser } from './pages/users/models';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators'; // Importar el operador map
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,7 +20,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   isLoading = false; // Definir la propiedad isLoading
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+     private router: Router) {
     // Agregar el operador map a authUser$
     this.authUser$ = this.authService.authUser$.pipe(
       map((user: IUser | null) => {
@@ -49,12 +51,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  login(): void {
-    this.authService.login();
-  }
-
   logout(): void {
     this.authService.logout();
+    this.router.navigate(['auth']);
   }
 
   isMobile(): boolean {

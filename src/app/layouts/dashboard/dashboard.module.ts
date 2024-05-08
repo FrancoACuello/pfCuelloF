@@ -16,6 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CoursesModule } from './pages/courses/courses.module';
 import { CalendarModule } from './pages/calendar/calendar.module';
 import { CourseUserComponent } from './pages/course-user/course-user.component';
+import { AuthModule } from '../auth/auth.module';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { CourseUserComponent } from './pages/course-user/course-user.component';
     MatProgressSpinnerModule,
     CoursesModule,
     CalendarModule,
+    AuthModule
     
   ],
   exports: [

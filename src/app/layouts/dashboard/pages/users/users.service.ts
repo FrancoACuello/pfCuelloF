@@ -9,7 +9,7 @@ import { createUserPayload } from './models';
 export class UsersService {
 
   constructor(private httpClient: HttpClient) {}
-
+// hago un llamado API usando .get //
   getUsers(): Observable<IUser[]> {
     return this.httpClient.get<IUser[]>(environment.baseApiUrl + 'users');
     // return of(USERS_DB).pipe(delay(1500));

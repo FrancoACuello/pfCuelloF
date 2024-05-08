@@ -5,6 +5,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { SharedModule } from '../../shared/shared.module';
 import { AuthService } from '../../core/services/auth.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { AuthService } from '../../core/services/auth.service';
   imports: [SharedModule,
     CommonModule,
     AuthRoutingModule,
+    MatFormFieldModule
+    
   ]
 })
 export class AuthModule { }

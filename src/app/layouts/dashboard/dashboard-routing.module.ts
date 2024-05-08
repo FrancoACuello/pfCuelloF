@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { AuthComponent } from '../auth/auth.component';
+import { authGuard } from '../../core/guards/auth.guard';
+import { adminGuard } from '../../core/guards/admin.guard';
+import { unsavedChangesGuard } from '../../core/guards/unsaved-changes.guard';
+
+
 const routes: Routes = [
   /**
    * Path actual: /dashboard
@@ -12,11 +18,13 @@ const routes: Routes = [
   },
   {
     path: 'users',
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./pages/users/users.module').then((m) => m.UsersModule),
   },
   {
     path: 'courses',
+    canDeactivate: [unsavedChangesGuard],
     loadChildren: () =>
       import('./pages/courses/courses.module').then((m) => m.CoursesModule),
   },

@@ -33,9 +33,7 @@ export class UserListComponent implements OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  login(): void {
-    this.authService.login();
-  }
+
 
   logout(): void {
     this.authService.logout();
