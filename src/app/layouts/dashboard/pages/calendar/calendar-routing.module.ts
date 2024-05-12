@@ -3,10 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CalendarComponent } from './calendar.component';
 
 const routes: Routes = [
-
-    /**
-   * Path actual: /dashboard/calendar
-   */
     {
       path: '',
       component: CalendarComponent,

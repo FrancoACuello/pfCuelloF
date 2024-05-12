@@ -94,7 +94,7 @@ openDialog(editingUser?: IUser): void {
   });
 }
 
-onDeleteUser(id: number): void {
+onDeleteUser(id: string): void {
   Swal.fire({
     title: '¿Estás seguro?',
     text: '¡No podrás revertir esto!',
@@ -106,15 +106,20 @@ onDeleteUser(id: number): void {
     cancelButtonText: 'Cancelar'
   }).then((result) => {
     if (result.isConfirmed) {
-      this.users = this.users.filter((u) => u.id != id);
-      Swal.fire(
-        'Eliminado!',
-        'El usuario ha sido eliminado.',
-        'success'
-      );
+      this.userService.deleteAndUpdateUsers(id).subscribe({
+        next: () => {
+          this.users = this.users.filter((u) => u.id.toString() !== id);
+          Swal.fire('Eliminado!', 'El usuario ha sido eliminado.', 'success');
+        },
+        error: (err) => {
+          console.log('Error al eliminar usuario: ', err);
+          Swal.fire('Error', 'Ocurrió un error al eliminar el usuario', 'error');
+        }
+      });
     }
   });
 }
+
 
 
 }

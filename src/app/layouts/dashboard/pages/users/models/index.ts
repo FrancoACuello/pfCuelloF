@@ -4,16 +4,15 @@ export interface IUser {
     id: number;
     firstName: string;
     lastName: string;
-    email:string;
+    email: string;
     role: UserRole;
     createdAt: Date;
 }
 
-export interface createUserPayload {
+export interface CreateUserPayload {
     firstName: string | null;
     lastName: string | null;
-    email:string | null;
+    email: string | null;
     role: UserRole | null;
     createdAt: Date | null;
-
- }
+}

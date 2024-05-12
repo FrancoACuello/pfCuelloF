@@ -1,23 +1,6 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
 
-<ng-container *ngIf="loading">
-
-  <mat-spinner diameter="50"></mat-spinner>
-</ng-container>
-
-<ng-container *ngIf="!loading">
-
-  <div class="user-details">
-    <h1>Detalles del usuario:</h1>
-    <mat-card *ngIf="users$ | async as user">
-      <mat-card-content>
-        <div class="user-info">
-          <p><strong>Nombre:</strong> {{ user.firstName }}</p>
-          <p><strong>Apellido:</strong> {{ user.lastName }}</p>
-          <p><strong>Email:</strong> {{ user.email }}</p>
-          <p><strong>Rol:</strong> {{ user.role }}</p>
-          <p><strong>Fecha de creación:</strong> {{ user.createdAt | date }}</p>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</ng-container>
+<div [ngClass]="!loading ? 'd-block' : 'd-none'">
+  <h1>Detalles del usuario: NOMBRE</h1>
+  <pre>{{ user$ | async | json }}</pre>
+</div>

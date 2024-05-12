@@ -4,32 +4,29 @@
       "id": "1",
       "firstName": "Franco",
       "lastName": "Cuello",
-      "email":"franco@gmail.com",
-      "role":"ADMIN"
+      "email": "franco@gmail.com",
+      "role": "ADMIN"
     },
     {
       "id": "2",
       "firstName": "Pedro",
       "lastName": "Sanchez",
-      "email":"Pedro@gmail.com",
-      "role":"USER"
-
+      "email": "Pedro@gmail.com",
+      "role": "USER"
     },
     {
       "firstName": "Martina",
       "lastName": "Martinangeli",
       "id": "6ba6",
-      "email":"martina@gmail.com",
-      "role":"USER"
-
-
+      "email": "martina@gmail.com",
+      "role": "USER"
     },
     {
       "id": "8712",
       "firstName": "Luca",
       "lastName": "Gaido",
       "email": "LucaG@gmail.com",
-      "role":"USER"
+      "role": "USER"
     }
   ],
   "courses": [],

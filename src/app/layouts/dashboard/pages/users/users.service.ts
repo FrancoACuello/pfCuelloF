@@ -1,30 +1,38 @@
 import { Injectable } from '@angular/core';
-import { IUser } from './models';
-import { catchError, delay, first, Observable, of, throwError } from 'rxjs';
+import { CreateUserPayload, IUser } from './models';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
-import { createUserPayload } from './models';
-
+import { tap } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class UsersService {
 
-  constructor(private httpClient: HttpClient) {}
-// hago un llamado API usando .get //
+  private baseAPIURL = environment.baseAPIURL; // Declara la propiedad 'baseAPIURL'
+
+
+  constructor(private httpClient: HttpClient, ) {}
+
   getUsers(): Observable<IUser[]> {
-    return this.httpClient.get<IUser[]>(environment.baseApiUrl + 'users');
-    // return of(USERS_DB).pipe(delay(1500));
-    // return throwError(() => new Error('Error al cargar los usuarios')).pipe(
-    //   catchError((err) => of(err))
-    // );
+    return this.httpClient.get<IUser[]>(environment.baseAPIURL + '/users');
   }
 
-  getUserById(id: number): Observable<IUser | undefined> {
-    return this.httpClient.get<IUser>(environment.baseApiUrl +'users/' + id)
-    // return of(USERS_DB.find((el) => el.id === id)).pipe(delay(1500));
+  getUserById(id: string): Observable<IUser | undefined> {
+    return this.httpClient.get<IUser>(`${environment.baseAPIURL}/users/${id}`);
   }
 
+  createUser(payload: CreateUserPayload): Observable<IUser> {
+    return this.httpClient.post<IUser>(
+      `${environment.baseAPIURL}/users`,
+      payload
+    );
+  }
 
-  createUser(payload: createUserPayload): Observable<IUser>{
-    return this.httpClient.post<IUser>(`${environment.baseApiUrl}/users`, {})
+  deleteAndUpdateUsers(id: string): Observable<void> {
+    const deleteUserUrl = `${this.baseAPIURL}/users/${id}`;
+    return this.httpClient.delete<void>(deleteUserUrl).pipe(
+      tap(() => {
+      })
+    );
   }
 }
+

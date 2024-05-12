@@ -12,6 +12,8 @@ import { CoursesModule } from './layouts/dashboard/pages/courses/courses.module'
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthRoutingModule } from './layouts/auth/auth-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -24,10 +26,12 @@ import { AuthRoutingModule } from './layouts/auth/auth-routing.module';
    CoursesModule,
    MatDatepickerModule,
    HttpClientModule,
-   AuthRoutingModule
+   AuthRoutingModule,
+   MatProgressSpinnerModule,
+   StoreModule.forRoot({}, {})
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })

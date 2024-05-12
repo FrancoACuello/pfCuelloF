@@ -2,5 +2,6 @@
 
 export const environment = {
     isProd: false,
-    baseApiUrl: 'http://localhost:3000/'
-};
+    baseAPIURL: 'http://localhost:3000',
+  };
+  

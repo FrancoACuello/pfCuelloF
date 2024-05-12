@@ -4,7 +4,7 @@ import { CoursesComponent } from './courses.component';
 import { CourseListComponent } from './courses-list/courses-list.component';
 const routes: Routes = [
   {
-    path: '', // Ruta base para el componente CoursesComponent
+    path: '',
     component: CoursesComponent,
   },
 ];
