@@ -7,11 +7,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CoursesComponent } from './courses.component';
 import { CoursesRoutingModule } from './courses-routing.module';
-import { MatListModule } from '@angular/material/list'
-import { FormsModule } from '@angular/forms'; 
+import { MatListModule } from '@angular/material/list';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CourseDialogModule } from './course-dialog/course-dialog.module';
 
 @NgModule({
-  declarations: [ CoursesComponent],
+  declarations: [CoursesComponent ],
   imports: [
     CommonModule,
     RouterModule,
@@ -21,9 +27,15 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatListModule,
     CoursesRoutingModule,
-    MatListModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    CourseDialogModule
+
   ],
   exports: [CoursesComponent]
 })
-export class CoursesModule { }
+export class CoursesModule {}

@@ -29,15 +29,12 @@ export class CalendarComponent implements OnInit {
 
 
   ngOnInit() {
-    const firstDayOfWeek = this.dateAdapter.getFirstDayOfWeek(); // Utiliza getFirstDayOfWeek en lugar de setFirstDayOfWeek
-    console.log('First day of week:', firstDayOfWeek);
+    const firstDayOfWeek = this.dateAdapter.getFirstDayOfWeek(); 
   }
 
   createEvent(selectedDate: Date, eventName: string): void {
     const eventDescription = `${this.newEvent.class} at ${this.newEvent.time}: ${eventName}`;
-    // Agregar el evento a la lista de eventos
     this.events.push(eventDescription);
-    // Reiniciar los campos del nuevo evento
     this.newEvent.class = '';
     this.newEvent.time = '';
     this.eventName = '';

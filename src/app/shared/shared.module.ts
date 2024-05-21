@@ -7,23 +7,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-
-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
-
-
-
-
 @NgModule({
+
   declarations: [],
   imports: [
     CommonModule
   ],
-  exports:[
+  exports: [
     MatTableModule,
     MatButtonModule,
     MatIconModule,
@@ -35,8 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatListModule,
     MatDatepickerModule,
     MatCardModule,
-    MatNativeDateModule,
-    
+    MatNativeDateModule
   ]
 })
 export class SharedModule { }

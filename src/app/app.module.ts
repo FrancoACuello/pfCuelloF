@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,10 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthRoutingModule } from './layouts/auth/auth-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { UsersEffects } from './store/users/users.effects';
+import { usersReducer } from './store/users/users.reducer';
+import { coursesReducer } from './store/courses/courses.reducers';
+import { CoursesEffects } from './store/courses/courses.effects';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,7 +33,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
    HttpClientModule,
    AuthRoutingModule,
    MatProgressSpinnerModule,
-   StoreModule.forRoot({}, {})
+   StoreModule.forRoot({users : usersReducer, courses: coursesReducer}),
+   EffectsModule.forRoot([UsersEffects, CoursesEffects, ]),
+   StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
     provideAnimationsAsync(),

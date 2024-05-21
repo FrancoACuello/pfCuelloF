@@ -1,33 +1,33 @@
-<div class="course-card" *ngFor="let course of courses">
-  <mat-card class="custom-card"  (click)="selectCourse(course)">
-    <mat-card-header>
-      <mat-card-title>{{ course.name }}</mat-card-title>
-      <mat-card-subtitle>{{ course.duration }} hours</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{ course.description }}</p>
-    </mat-card-content>
-  </mat-card>
-</div>
 
-<div *ngIf="selectedCourse" class="course-form">
-  <mat-card>
-    <mat-card-content>
-      <mat-form-field>
-        <input matInput [(ngModel)]="selectedCourse.name" placeholder="Course Name">
-      </mat-form-field>
-      <mat-form-field>
-        <textarea matInput [(ngModel)]="selectedCourse.description" placeholder="Course Description"></textarea>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="number" [(ngModel)]="selectedCourse.duration" placeholder="Course Duration">
-      </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button color="primary" (click)="saveCourse()">Save</button>
-      <button mat-button color="warn" (click)="confirmDeleteCourse(selectedCourse.id)">Delete</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
 
-<button mat-raised-button class="add-button" (click)="addCourse()">Add New Course</button>
+<div *ngIf="!loading">
+  <div class="container mt-3">
+    <div class="row justify-content-end">
+      <div class="col-auto">
+        <button (click)="openDialog()" mat-raised-button color="primary">
+          <mat-icon>add</mat-icon> Crear Curso
+        </button>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col" *ngFor="let course of courses">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ course.name }}</mat-card-title>
+            <mat-card-subtitle>{{ course.instructor }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ course.description }}</p>
+            <p><strong>Duración:</strong> {{ course.duration }}</p>
+            <p><strong>Fecha de Inicio:</strong> {{ course.startDate | date }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button (click)="openDialog(course)" mat-button>Editar</button>
+            <button (click)="onDeleteCourse(course.id)" mat-button color="warn">Eliminar</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

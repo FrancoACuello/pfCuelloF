@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../../../core/services/api.service';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  showWelcomeMessage = true;
 
-  characters$: Observable<any> = new Observable<any>(); // Inicialización en el constructor
-
-  
-  constructor(private apiService: ApiService) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.characters$ = this.apiService.getData(); // Asignación del valor
+    setTimeout(() => {
+      this.showWelcomeMessage = false;
+      this.router.navigate(['/dashboard/users']);
+    }, 3000); 
   }
 }

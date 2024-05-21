@@ -1,14 +1,5 @@
-<div *ngIf="characters$ | async as characters; else loading">
-    <ul>
-      <li *ngFor="let character of characters">
-        <h2>{{ character.name }}</h2>
-        <p>{{ character.description }}</p>
-        <!-- Otros campos que desees mostrar -->
-      </li>
-    </ul>
+<div class="welcome-container animate__animated animate__zoomIn" *ngIf="showWelcomeMessage">
+  <div class="welcome-message">
+    <h1>Bienvenido a la Escuela</h1>
   </div>
-  
-  <ng-template #loading>
-    <p>Cargando...</p>
-  </ng-template>
-  
+</div>

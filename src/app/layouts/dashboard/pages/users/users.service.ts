@@ -7,7 +7,7 @@ import { tap } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class UsersService {
 
-  private baseAPIURL = environment.baseAPIURL; // Declara la propiedad 'baseAPIURL'
+  private baseAPIURL = environment.baseAPIURL; 
 
 
   constructor(private httpClient: HttpClient, ) {}
@@ -27,7 +27,11 @@ export class UsersService {
     );
   }
 
-  deleteAndUpdateUsers(id: string): Observable<void> {
+  updateUser(user: IUser):Observable<IUser>{
+    return this.httpClient.put<IUser>(`${this.baseAPIURL}/users/${user.id}`, user);
+  }
+
+  deleteAndUpdateUsers(id: number): Observable<void> {
     const deleteUserUrl = `${this.baseAPIURL}/users/${id}`;
     return this.httpClient.delete<void>(deleteUserUrl).pipe(
       tap(() => {

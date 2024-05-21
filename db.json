@@ -15,20 +15,78 @@
       "role": "USER"
     },
     {
-      "firstName": "Martina",
-      "lastName": "Martinangeli",
-      "id": "6ba6",
-      "email": "martina@gmail.com",
-      "role": "USER"
-    },
-    {
       "id": "8712",
       "firstName": "Luca",
       "lastName": "Gaido",
       "email": "LucaG@gmail.com",
       "role": "USER"
+    },
+    {
+      "id": "4ab5",
+      "firstName": "asdasdaasdasdas",
+      "lastName": "asdasdas",
+      "email": "asdasd@asdasdsasd",
+      "role": "ADMIN"
+    },
+    {
+      "id": "a08f",
+      "firstName": "asdrbtbtgn",
+      "lastName": "tnbrnrtn",
+      "email": "rtnrtntrn@btnrtntrn",
+      "role": "USER"
     }
   ],
-  "courses": [],
-  "roles": []
+  "courses": [
+    {
+      "id": "101",
+      "title": "React",
+      "description": "En este curso aprenderas React.",
+      "startDate": "2024-06-01T00:00:00Z",
+      "endDate": "2024-07-01T00:00:00Z",
+      "instructor": "John Doe",
+      "students": [
+        "1",
+        "2",
+        "2"
+      ],
+      "duration": 34,
+      "name": "React"
+    },
+    {
+      "id": "102",
+      "title": "Angular",
+      "description": "En este curso aprenderas Angular.",
+      "startDate": "2024-08-01T00:00:00Z",
+      "endDate": "2024-09-01T00:00:00Z",
+      "instructor": "Jane Smith",
+      "students": [
+        "2"
+      ],
+      "duration": 34,
+      "name": "Angular"
+    },
+    {
+      "id": "b915",
+      "name": "Karate",
+      "description": "Aprenderas a patear puertas.",
+      "duration": "999",
+      "instructor": "Kaka",
+      "startDate": "2111-11-11T03:00:00.000Z"
+    },
+    {
+      "id": "4fda",
+      "name": "Vue",
+      "description": "En este curso aprenderas Vue/",
+      "duration": "34",
+      "instructor": "Jose Lopez",
+      "startDate": "2024-08-14T03:00:00.000Z"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "4ab6",
+      "courseId": "102",
+      "studentId": "2"
+    }
+  ]
 }

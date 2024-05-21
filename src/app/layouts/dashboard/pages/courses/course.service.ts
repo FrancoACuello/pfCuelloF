@@ -1,44 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Course } from './models';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ICourse } from './models/index'
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CourseService {
+export class CoursesService {
+  private baseAPIURL = environment.baseAPIURL;
 
-  private courses: Course[] = [
-    { id: 1, name: 'Angular', description: 'Curso avanzado de Angular', duration: 60 },
-    { id: 2, name: 'React', description: 'Curso completo de React', duration: 45 },
-    { id: 3, name: 'Vue.js', description: 'Introducción a Vue.js', duration: 30 }
-  ];
+  constructor(private httpClient: HttpClient) {}
 
-  constructor() {}
-
-  getCourses(): Observable<Course[]> {
-    return of(this.courses);
+  getCourses(): Observable<ICourse[]> {
+    return this.httpClient.get<ICourse[]>(`${environment.baseAPIURL}/courses`);
   }
 
-  getCourseById(id: number): Observable<Course | undefined> {
-    const course = this.courses.find(c => c.id === id);
-    return of(course);
+  getCourseById(id: string): Observable<ICourse> {
+    return this.httpClient.get<ICourse>(`${environment.baseAPIURL}/courses/${id}`);
   }
 
-  addCourse(course: Course): void {
-    // Agregar el nuevo curso al arreglo de cursos
-    this.courses.push(course);
+  createCourse(course: ICourse): Observable<ICourse> {
+    return this.httpClient.post<ICourse>(`${environment.baseAPIURL}/courses`, course);
   }
 
-  updateCourse(course: Course): void {
-    // Actualizar el curso existente en el arreglo de cursos
-    const index = this.courses.findIndex(c => c.id === course.id);
-    if (index !== -1) {
-      this.courses[index] = course;
-    }
+  updateCourse(course: ICourse): Observable<ICourse> {
+    return this.httpClient.put<ICourse>(`${environment.baseAPIURL}/courses/${course.id}`, course);
   }
 
-  deleteCourse(id: number): void {
-    // Eliminar el curso con el ID proporcionado del arreglo de cursos
-    this.courses = this.courses.filter(course => course.id !== id);
+  deleteCourse(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${environment.baseAPIURL}/courses/${id}`);
   }
 }

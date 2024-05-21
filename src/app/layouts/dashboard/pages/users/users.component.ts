@@ -1,26 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from './models';
+import { CreateUserPayload, IUser } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 import Swal from 'sweetalert2';
-import {
-  BehaviorSubject,
-  delay,
-  filter,
-  first,
-  forkJoin,
-  map,
-  Observable,
-  of,
-  skip,
-  Subject,
-  Subscription,
-  take,
-  takeUntil,
-  tap,
-} from 'rxjs';
  import { UsersService } from './users.service';
  import { HttpClient } from '@angular/common/http';
+
+
+import { Store } from '@ngrx/store';
+import * as UsersActions from '../../../../store/users/users.actions';
+import * as UsersSelectors from '../../../../store/users/users.selectors';
+import { AppState, UserActions } from '../../../../store';
 
 
 @Component({
@@ -43,27 +33,30 @@ export class UsersComponent implements OnInit {
   
 
 constructor(
+  private store : Store<AppState>,
   private httpClient : HttpClient,
   private matDialog : MatDialog,
   private userService: UsersService
 ) {}
 
 ngOnInit(): void {
-  this.loading = true;
-  this.userService.getUsers().subscribe({
-    next: (users) => {
-      console.log('next: ', users);
+    this.store.dispatch(UsersActions.loadUsers());
+
+    this.store.select(UsersSelectors.selectAllUsers).subscribe(users => {
       this.users = users;
-    },
-    error: (err) => {
-      console.log('error: ', err);
-      Swal.fire('Error', 'Ocurrio un error', 'error');
-    },
-    complete: () => {
-      console.log('complete');
       this.loading = false;
-    },
-  });
+    });
+
+    this.store.select(UsersSelectors.selectUsersLoading).subscribe(loading => {
+      this.loading = loading;
+    });
+
+    this.store.select(UsersSelectors.selectUsersError).subscribe(error => {
+      if (error) {
+        Swal.fire('Error', 'Ocurrio un  error al cargar los usuarios', 'error');
+      }
+    });
+
 }
 
 
@@ -78,23 +71,21 @@ openDialog(editingUser?: IUser): void {
       if (result) {
 
         if (editingUser) {
-          this.users = this.users.map((u) => u.id === editingUser.id ? {...u, ...result} : u);
+          const updateUser: IUser = {...editingUser, ...result };
+          this.store.dispatch(UsersActions.updateUser({ user: updateUser}));
+          // this.users = this.users.map((u) => u.id === editingUser.id ? {...u, ...result} : u);
         } else {
-          this.userService.createUser(result).subscribe({
-            next:(userCreated) => {
-              this.users = [...this.users,userCreated]
+          const payload: CreateUserPayload = result;
+          this.store.dispatch(UsersActions.createUser({ payload}));
             }
-          })
-          // result.id = new Date().getTime().toString().substring(0, 3);
           result.createdAt = new Date();
-          // this.users = [...this.users,result];
         }
       }
     },
-  });
+  );
 }
 
-onDeleteUser(id: string): void {
+onDeleteUser(id: number): void {
   Swal.fire({
     title: '¿Estás seguro?',
     text: '¡No podrás revertir esto!',
@@ -106,16 +97,8 @@ onDeleteUser(id: string): void {
     cancelButtonText: 'Cancelar'
   }).then((result) => {
     if (result.isConfirmed) {
-      this.userService.deleteAndUpdateUsers(id).subscribe({
-        next: () => {
-          this.users = this.users.filter((u) => u.id.toString() !== id);
-          Swal.fire('Eliminado!', 'El usuario ha sido eliminado.', 'success');
-        },
-        error: (err) => {
-          console.log('Error al eliminar usuario: ', err);
-          Swal.fire('Error', 'Ocurrió un error al eliminar el usuario', 'error');
-        }
-      });
+      this.store.dispatch(UsersActions.deleteUser({ id }));
+      Swal.fire('Eliminado!', 'El usuario ha sido eliminado.', 'success');
     }
   });
 }

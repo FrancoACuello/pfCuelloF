@@ -6,7 +6,7 @@ import { UsersComponent } from './users.component';
 
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 import { SharedModule } from '../../../../shared/shared.module';
-import { PipesYDirectivasModule } from '../pipes-y-directivas/pipes-y-directivas.module';
+import { PipesYDirectivasModule } from '../../../../core/pipes-y-directivas/pipes-y-directivas.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MatIconModule } from '@angular/material/icon';

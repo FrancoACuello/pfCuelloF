@@ -5,7 +5,7 @@ import { AuthComponent } from '../auth/auth.component';
 import { authGuard } from '../../core/guards/auth.guard';
 import { adminGuard } from '../../core/guards/admin.guard';
 import { unsavedChangesGuard } from '../../core/guards/unsaved-changes.guard';
-
+import { EnrollmentsRoutingModule } from './pages/enrollments/enrollments-routing.module';
 
 const routes: Routes = [
   /**
@@ -13,6 +13,7 @@ const routes: Routes = [
    */
   {
     path: 'home',
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
@@ -24,15 +25,23 @@ const routes: Routes = [
   },
   {
     path: 'courses',
-    canDeactivate: [unsavedChangesGuard],
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./pages/courses/courses.module').then((m) => m.CoursesModule),
   },
  
   {
     path: 'calendar',
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./pages/calendar/calendar.module').then((m) => m.CalendarModule)
+  },
+
+  {
+    path: 'enrollments',
+    canActivate: [adminGuard],
+    loadChildren: () =>
+      import('./pages/enrollments/enrollments.module').then((m) => m.EnrollmentsModule)
   },
 
   {

@@ -9,20 +9,20 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { UsersModule } from './pages/users/users.module';
-import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
+import { PipesYDirectivasModule } from '../../core/pipes-y-directivas/pipes-y-directivas.module';
 import { SharedModule } from '../../shared/shared.module';
 import { UserListModule } from './pages/users/user-list/user-list.module'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CoursesModule } from './pages/courses/courses.module';
 import { CalendarModule } from './pages/calendar/calendar.module';
-import { CourseUserComponent } from './pages/course-user/course-user.component';
 import { AuthModule } from '../auth/auth.module';
+import { EnrollmentsRoutingModule } from './pages/enrollments/enrollments-routing.module';
+import { EnrollmentsModule } from './pages/enrollments/enrollments.module';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    CourseUserComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +38,9 @@ import { AuthModule } from '../auth/auth.module';
     MatProgressSpinnerModule,
     CoursesModule,
     CalendarModule,
-    AuthModule
+    AuthModule,
+    EnrollmentsRoutingModule,
+    EnrollmentsModule
   ],
   exports: [
     DashboardComponent
