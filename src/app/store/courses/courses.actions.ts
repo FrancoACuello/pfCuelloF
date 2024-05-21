@@ -13,6 +13,6 @@ export const updateCourse = createAction('[Courses] Update Course', props<{ cour
 export const updateCourseSuccess = createAction('[Courses] Update Course Success', props<{ course: ICourse }>());
 export const updateCourseFailure = createAction('[Courses] Update Course Failure', props<{ error: string }>());
 
-export const deleteCourse = createAction('[Courses] Delete Course', props<{ id: number }>());
-export const deleteCourseSuccess = createAction('[Courses] Delete Course Success', props<{ id: number }>());
+export const deleteCourse = createAction('[Courses] Delete Course', props<{ id: string }>());
+export const deleteCourseSuccess = createAction('[Courses] Delete Course Success', props<{ id: string }>());
 export const deleteCourseFailure = createAction('[Courses] Delete Course Failure', props<{ error: string }>());

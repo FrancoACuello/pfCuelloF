@@ -4,6 +4,7 @@ import { EnrollmentsRoutingModule } from './enrollments-routing.module';
 import { EnrollmentsComponent } from './enrollments.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
   ],
   imports: [
     CommonModule,
-    EnrollmentsRoutingModule,
+    EnrollmentsRoutingModule,FormsModule,EffectsModule,StoreModule
   ],
   providers: []
 })

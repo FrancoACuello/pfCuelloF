@@ -28,7 +28,12 @@ export class CoursesService {
     return this.httpClient.put<ICourse>(`${environment.baseAPIURL}/courses/${course.id}`, course);
   }
 
-  deleteCourse(id: number): Observable<void> {
+  deleteCourse(id: string): Observable<void> {
     return this.httpClient.delete<void>(`${environment.baseAPIURL}/courses/${id}`);
   }
+  
+  updateCourseWithEnrollments(course: ICourse): Observable<ICourse> {
+    return this.httpClient.put<ICourse>(`${environment.baseAPIURL}/courses/${course.id}`, course);
+  }
+  
 }

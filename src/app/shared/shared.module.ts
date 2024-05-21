@@ -12,6 +12,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
+
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
 
   declarations: [],
@@ -30,7 +33,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatListModule,
     MatDatepickerModule,
     MatCardModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

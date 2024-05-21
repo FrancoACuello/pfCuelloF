@@ -24,15 +24,15 @@ export class UsersEffects {
   )
 );
 
-  createUser$ = createEffect(() => this.actions$.pipe(
-    ofType(UsersActions.createUser),
-    mergeMap(action => this.usersService.createUser(action.payload).pipe(
-      map(user => UsersActions.createUserSuccess({ user })),
-      catchError(error => of(UsersActions.createUserFailure({ error })))
-      )
+createUser$ = createEffect(() => this.actions$.pipe(
+  ofType(UsersActions.createUser),
+  mergeMap(action => this.usersService.createUser(action.user).pipe(
+    map(user => UsersActions.createUserSuccess({ user })),
+    catchError(error => of(UsersActions.createUserFailure({ error })))
     )
   )
-);
+));
+
 
   updateUser$ = createEffect(() =>
     this.actions$.pipe(
@@ -46,13 +46,11 @@ export class UsersEffects {
     )
   );
 
-  deleteUser$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(UsersActions.deleteUser),
-      mergeMap(action => this.usersService.deleteAndUpdateUsers(action.id).pipe(
-        map(() => UsersActions.deleteUserSuccess({ id: action.id })), 
-        catchError(error => of(UsersActions.deleteUserFailure({ error })))
-      ))
-    )
-  );
+  deleteUser$ = createEffect(() => this.actions$.pipe(
+    ofType(UsersActions.deleteUser),
+    mergeMap(action => this.usersService.deleteAndUpdateUsers(action.id).pipe(
+      map(() => UsersActions.deleteUserSuccess({ id: action.id })),
+      catchError(error => of(UsersActions.deleteUserFailure({ error: error.message })))
+    ))
+  ));
 }

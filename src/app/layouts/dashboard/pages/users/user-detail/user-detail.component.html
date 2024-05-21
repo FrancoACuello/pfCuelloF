@@ -1,6 +1,33 @@
-<mat-spinner *ngIf="loading"></mat-spinner>
-
-<div [ngClass]="!loading ? 'd-block' : 'd-none'">
-  <h1>Detalles del usuario: NOMBRE</h1>
-  <pre>{{ user$ | async | json }}</pre>
+<div class="user-detail-container" >
+  <h1>Detalles del usuario: {{ (user$ | async)?.firstName }}</h1>
+  <mat-card>
+    <mat-card-content>
+      <div class="user-detail">
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListIcon>account_circle</mat-icon>
+            <h4 matLine>Nombre Completo: {{ (user$ | async)?.firstName }}</h4>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>email</mat-icon>
+            <h4 matLine>Email: {{ (user$ | async)?.email }}</h4>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>calendar_today</mat-icon>
+            <h4 matLine>Fecha de Creación: {{ (user$ | async)?.createdAt | date }}</h4>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListIcon>perm_identity</mat-icon>
+            <h4 matLine>Rol: {{ (user$ | async)?.role }}</h4>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

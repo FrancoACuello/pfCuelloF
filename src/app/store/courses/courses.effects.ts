@@ -43,7 +43,6 @@ export class CoursesEffects {
     mergeMap(action => this.coursesService.deleteCourse(action.id).pipe(
       map(() => CoursesActions.deleteCourseSuccess({ id: action.id })),
       catchError(error => of(CoursesActions.deleteCourseFailure({ error: error.message })))
-      )
-    )
+    ))
   ));
 }

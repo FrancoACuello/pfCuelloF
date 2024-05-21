@@ -40,7 +40,7 @@ describe('UsersComponent', () => {
 
   it('debería cargar los usuarios durante la inicialización', () => {
     const mockUsers: IUser[] = [
-      { id: 1, firstName: 'Franco', lastName: 'Apellido', email: 'usuario1@example.com', role: 'ADMIN', createdAt: new Date() }
+      { id: '1', firstName: 'Franco', lastName: 'Apellido', email: 'usuario1@example.com', role: 'ADMIN', createdAt: new Date() }
       // Agrega las propiedades faltantes en tus objetos de prueba
     ];
     spyOn(userService, 'getUsers').and.returnValue(of(mockUsers)); // Simula getUsers devolviendo datos de prueba

@@ -61,7 +61,7 @@ export class CoursesComponent implements OnInit {
       });
   }
 
-  onDeleteCourse(id: number): void {
+  onDeleteCourse(id: string): void {  
     Swal.fire({
       title: '¿Estás seguro?',
       text: '¡No podrás revertir esto!',

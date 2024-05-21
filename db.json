@@ -29,11 +29,11 @@
       "role": "ADMIN"
     },
     {
-      "id": "a08f",
-      "firstName": "asdrbtbtgn",
-      "lastName": "tnbrnrtn",
-      "email": "rtnrtntrn@btnrtntrn",
-      "role": "USER"
+      "id": "ddb0",
+      "firstName": "luffy",
+      "lastName": "monkey",
+      "email": "goldroger@gmail.com",
+      "role": "ADMIN"
     }
   ],
   "courses": [
@@ -76,7 +76,7 @@
     {
       "id": "4fda",
       "name": "Vue",
-      "description": "En este curso aprenderas Vue/",
+      "description": "En este curso aprenderas Vue.",
       "duration": "34",
       "instructor": "Jose Lopez",
       "startDate": "2024-08-14T03:00:00.000Z"
@@ -85,6 +85,16 @@
   "enrollments": [
     {
       "id": "4ab6",
+      "courseId": "102",
+      "studentId": "2"
+    },
+    {
+      "id": "0",
+      "courseId": "4fda",
+      "studentId": "2"
+    },
+    {
+      "id": "0",
       "courseId": "102",
       "studentId": "2"
     }

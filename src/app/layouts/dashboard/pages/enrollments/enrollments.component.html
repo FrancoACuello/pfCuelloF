@@ -1,0 +1,15 @@
+<div *ngIf="!loadingCourses && !loadingUsers">
+    <h2>Lista de Cursos</h2>
+    <ul>
+      <li *ngFor="let course of courses">
+        {{ course.name }} - {{ course.description }}
+        <button (click)="enrollStudent(course.id, selectedUserId)">Inscribir</button>
+      </li>
+    </ul>
+  
+    <h2>Lista de Usuarios</h2>
+    <select [(ngModel)]="selectedUserId">
+      <option *ngFor="let user of users" [value]="user.id">{{ user.firstName }} {{ user.lastName }}</option>
+    </select>
+  </div>
+  

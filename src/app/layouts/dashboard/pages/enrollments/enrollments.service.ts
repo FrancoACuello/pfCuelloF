@@ -10,15 +10,7 @@ export class EnrollmentsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getEnrollments(): Observable<IEnrollment[]> {
-    return this.httpClient.get<IEnrollment[]>(`${this.baseAPIURL}/enrollments`);
-  }
-
-  createEnrollment(enrollment: IEnrollment): Observable<IEnrollment> {
-    return this.httpClient.post<IEnrollment>(`${this.baseAPIURL}/enrollments`, enrollment);
-  }
-
-  deleteEnrollment(id: string): Observable<void> {
-    return this.httpClient.delete<void>(`${this.baseAPIURL}/enrollments/${id}`);
+  enrollStudent(enrollment: IEnrollment): Observable<IEnrollment> {
+    return this.httpClient.post<IEnrollment>(`${environment.baseAPIURL}/enrollments`, enrollment);
   }
 }

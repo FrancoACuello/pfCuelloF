@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private MOCK_AUTH_USER: IUser = {
-    id: 1,
+    id: '1',
     createdAt: new Date(),
     email: 'franco@gmail.com',
     firstName: 'Franco',

@@ -31,7 +31,7 @@ export class UsersService {
     return this.httpClient.put<IUser>(`${this.baseAPIURL}/users/${user.id}`, user);
   }
 
-  deleteAndUpdateUsers(id: number): Observable<void> {
+  deleteAndUpdateUsers(id: string): Observable<void> {
     const deleteUserUrl = `${this.baseAPIURL}/users/${id}`;
     return this.httpClient.delete<void>(deleteUserUrl).pipe(
       tap(() => {

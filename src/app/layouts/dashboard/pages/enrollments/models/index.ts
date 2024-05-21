@@ -1,4 +1,5 @@
 export interface IEnrollment {
-    courseId: string;
-    studentId: string;
-  }
+  id: string;
+  courseId: string;
+  studentId: string;
+}

@@ -16,26 +16,27 @@ export const initialState: CoursesState = {
 
 export const coursesReducer = createReducer(
   initialState,
-  on(CoursesActions.loadCourses, state => ({ ...state, loading: true })),
-  on(CoursesActions.loadCoursesSuccess, (state, { courses }) => ({ ...state, courses, loading: false })),
-  on(CoursesActions.loadCoursesFailure, (state, { error }) => ({ ...state, error, loading: false })),
-
-  on(CoursesActions.createCourseSuccess, (state, { course }) => ({ ...state, courses: [...state.courses, course] })),
-  on(CoursesActions.createCourseFailure, (state, { error }) => ({ ...state, error })),
-
-  on(CoursesActions.updateCourseSuccess, (state, { course }) => ({
+  on(CoursesActions.loadCourses, state => ({
     ...state,
-    courses: state.courses.map(c => c.id === course.id ? course : c)
+    loading: true,
+    error: null
   })),
-  on(CoursesActions.updateCourseFailure, (state, { error }) => ({ ...state, error })),
-
+  on(CoursesActions.loadCoursesSuccess, (state, { courses }) => ({
+    ...state,
+    courses,
+    loading: false
+  })),
+  on(CoursesActions.loadCoursesFailure, (state, { error }) => ({
+    ...state,
+    error,
+    loading: false
+  })),
   on(CoursesActions.deleteCourseSuccess, (state, { id }) => ({
     ...state,
-    courses: state.courses.filter(c => c.id !== id)
+    courses: state.courses.filter(course => course.id !== id)
   })),
-  on(CoursesActions.deleteCourseFailure, (state, { error }) => ({ ...state, error }))
+  on(CoursesActions.deleteCourseFailure, (state, { error }) => ({
+    ...state,
+    error
+  }))
 );
-
-export function reducer(state: CoursesState | undefined, action: Action) {
-  return coursesReducer(state, action);
-}
