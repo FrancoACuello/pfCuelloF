@@ -1,5 +1,7 @@
+// src/app/models/enrollment.model.ts
 export interface IEnrollment {
   id: string;
+  userId: string;
   courseId: string;
-  studentId: string;
+  startDate: Date;
 }

@@ -20,6 +20,8 @@ import { UsersEffects } from './store/users/users.effects';
 import { usersReducer } from './store/users/users.reducer';
 import { coursesReducer } from './store/courses/courses.reducers';
 import { CoursesEffects } from './store/courses/courses.effects';
+import { EnrollmentsEffects } from './store/enrollment/enrollment.effects';
+import { enrollmentsReducer } from './store/enrollment/enrollment.reducers';
 
 @NgModule({
   declarations: [AppComponent,],
@@ -33,8 +35,8 @@ import { CoursesEffects } from './store/courses/courses.effects';
    HttpClientModule,
    AuthRoutingModule,
    MatProgressSpinnerModule,
-   StoreModule.forRoot({users : usersReducer, courses: coursesReducer}),
-   EffectsModule.forRoot([UsersEffects, CoursesEffects, ]),
+   StoreModule.forRoot({users : usersReducer, courses: coursesReducer , enrollments: enrollmentsReducer}),
+   EffectsModule.forRoot([UsersEffects, CoursesEffects, EnrollmentsEffects ]),
    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [

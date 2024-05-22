@@ -4,36 +4,29 @@
       "id": "1",
       "firstName": "Franco",
       "lastName": "Cuello",
-      "email": "franco@gmail.com",
+      "email": "Franco@gmail.com",
       "role": "ADMIN"
     },
     {
       "id": "2",
-      "firstName": "Pedro",
+      "firstName": "Rick",
       "lastName": "Sanchez",
-      "email": "Pedro@gmail.com",
+      "email": "Ricardo@outlook.com",
       "role": "USER"
     },
     {
       "id": "8712",
-      "firstName": "Luca",
-      "lastName": "Gaido",
-      "email": "LucaG@gmail.com",
-      "role": "USER"
-    },
-    {
-      "id": "4ab5",
-      "firstName": "asdasdaasdasdas",
-      "lastName": "asdasdas",
-      "email": "asdasd@asdasdsasd",
+      "firstName": "Nacho",
+      "lastName": "Libre",
+      "email": "Nacho@libre.com",
       "role": "ADMIN"
     },
     {
       "id": "ddb0",
-      "firstName": "luffy",
-      "lastName": "monkey",
+      "firstName": "Luffy",
+      "lastName": "D",
       "email": "goldroger@gmail.com",
-      "role": "ADMIN"
+      "role": "USER"
     }
   ],
   "courses": [
@@ -70,7 +63,7 @@
       "name": "Karate",
       "description": "Aprenderas a patear puertas.",
       "duration": "999",
-      "instructor": "Kaka",
+      "instructor": "Luffy",
       "startDate": "2111-11-11T03:00:00.000Z"
     },
     {
@@ -80,6 +73,14 @@
       "duration": "34",
       "instructor": "Jose Lopez",
       "startDate": "2024-08-14T03:00:00.000Z"
+    },
+    {
+      "id": "e334",
+      "name": "Natacion",
+      "description": "Aprenderas a nadar mariposa.",
+      "duration": "420",
+      "instructor": "Michael Phelps",
+      "startDate": "2008-09-19T03:00:00.000Z"
     }
   ],
   "enrollments": [
@@ -89,14 +90,9 @@
       "studentId": "2"
     },
     {
-      "id": "0",
-      "courseId": "4fda",
-      "studentId": "2"
-    },
-    {
-      "id": "0",
+      "id": "acb9",
       "courseId": "102",
-      "studentId": "2"
+      "userId": "2"
     }
   ]
 }

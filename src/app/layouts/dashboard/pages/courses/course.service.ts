@@ -13,23 +13,28 @@ export class CoursesService {
   constructor(private httpClient: HttpClient) {}
 
   getCourses(): Observable<ICourse[]> {
-    return this.httpClient.get<ICourse[]>(`${environment.baseAPIURL}/courses`);
+    return this.httpClient.get<ICourse[]>(
+      `${environment.baseAPIURL}/courses`);
   }
 
   getCourseById(id: string): Observable<ICourse> {
-    return this.httpClient.get<ICourse>(`${environment.baseAPIURL}/courses/${id}`);
+    return this.httpClient.get<ICourse>(
+      `${environment.baseAPIURL}/courses/${id}`);
   }
 
   createCourse(course: ICourse): Observable<ICourse> {
-    return this.httpClient.post<ICourse>(`${environment.baseAPIURL}/courses`, course);
+    return this.httpClient.post<ICourse>(
+      `${environment.baseAPIURL}/courses`, course);
   }
 
   updateCourse(course: ICourse): Observable<ICourse> {
-    return this.httpClient.put<ICourse>(`${environment.baseAPIURL}/courses/${course.id}`, course);
+    return this.httpClient.put<ICourse>(
+      `${environment.baseAPIURL}/courses/${course.id}`, course);
   }
 
   deleteCourse(id: string): Observable<void> {
-    return this.httpClient.delete<void>(`${environment.baseAPIURL}/courses/${id}`);
+    return this.httpClient.delete<void>(
+      `${environment.baseAPIURL}/courses/${id}`);
   }
   
   updateCourseWithEnrollments(course: ICourse): Observable<ICourse> {

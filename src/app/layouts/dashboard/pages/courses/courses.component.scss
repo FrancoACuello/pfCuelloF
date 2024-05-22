@@ -1,0 +1,111 @@
+.container {
+    background-color: #1151bf72; // Fondo neutro
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif; 
+  
+    .row {
+      margin-bottom: 20px;
+  
+      .col-auto {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+  
+        button {
+          background-color: #000000; 
+          color: #fff;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-size: 16px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+          mat-icon {
+            margin-right: 8px;
+          }
+  
+          &:hover {
+            background-color: #5a6268;
+          }
+        }
+      }
+  
+      .col {
+        display: flex;
+        justify-content: center;
+  
+        mat-card {
+          width: 100%;
+          max-width: 600px; 
+          margin-bottom: 20px;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+          mat-card-header {
+            background-color: #e9ecef; 
+            color: #4059e4; 
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding-bottom: 10px;
+  
+            mat-card-title {
+              font-size: 24px; 
+              font-weight: bold;
+              margin-bottom: 5px; 
+            }
+  
+            mat-card-subtitle {
+              font-size: 21px;
+              font-weight: 300;
+              color: #000000cb; 
+            }
+          }
+  
+          mat-card-content {
+            padding: 20px;
+            font-size: 18px; 
+            color: #495057;
+  
+            p {
+              margin: 10px 0;
+              
+              &:first-of-type {
+                margin-top: 0;
+              }
+  
+              strong {
+                color: #343a40; 
+              }
+            }
+          }
+  
+          mat-card-actions {
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+  
+            button {
+              margin-left: 10px;
+              color: #2a3036; 
+              font-weight: bold;
+              font-size: 16px; 
+  
+              &:hover {
+                background-color: rgba(73, 80, 87, 0.1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  

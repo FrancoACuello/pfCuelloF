@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EnrollmentsRoutingModule } from './enrollments-routing.module';
-import { EnrollmentsComponent } from './enrollments.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FormsModule } from '@angular/forms';
+import { EnrollmentsComponent } from './enrollments.component';
+import { SharedModule } from '../../../../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    EnrollmentsComponent
+  declarations:[
+    EnrollmentsComponent,
   ],
   imports: [
     CommonModule,
-    EnrollmentsRoutingModule,FormsModule,EffectsModule,StoreModule
+    EnrollmentsRoutingModule,
+    FormsModule,
+    EffectsModule,StoreModule,
+    SharedModule
   ],
-  providers: []
+  providers: [],
 })
 export class EnrollmentsModule { }

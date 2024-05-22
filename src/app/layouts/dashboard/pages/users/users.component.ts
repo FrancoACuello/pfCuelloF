@@ -18,7 +18,7 @@ export class UsersComponent implements OnInit {
   loading = true;
   users: IUser[] = [];
   error: string | null = null;
-  displayedColumns: string[] = ['id','firstName', 'lastName', 'email','role', 'actions']; // Definir columnas
+  displayedColumns: string[] = ['id','nombreCompleto','firstName', 'lastName', 'email','role', 'actions']; 
 
 
 

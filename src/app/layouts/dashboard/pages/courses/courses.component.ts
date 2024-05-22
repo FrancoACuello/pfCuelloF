@@ -17,6 +17,7 @@ export class CoursesComponent implements OnInit {
   loading = true;
   courses: ICourse[] = [];
   error: string | null = null;
+  displayedColumns: string[] = ['id', 'nombreCompleto', 'email', 'role', 'createdAt', 'actions'];
 
   constructor(
     private store: Store<AppState>,

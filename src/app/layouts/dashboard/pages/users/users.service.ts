@@ -17,7 +17,8 @@ export class UsersService {
   }
 
   getUserById(id: string): Observable<IUser | undefined> {
-    return this.httpClient.get<IUser>(`${environment.baseAPIURL}/users/${id}`);
+    return this.httpClient.get<IUser>(
+      `${environment.baseAPIURL}/users/${id}`);
   }
 
   createUser(payload: CreateUserPayload): Observable<IUser> {
@@ -28,7 +29,8 @@ export class UsersService {
   }
 
   updateUser(user: IUser):Observable<IUser>{
-    return this.httpClient.put<IUser>(`${this.baseAPIURL}/users/${user.id}`, user);
+    return this.httpClient.put<IUser>(
+      `${this.baseAPIURL}/users/${user.id}`, user);
   }
 
   deleteAndUpdateUsers(id: string): Observable<void> {

@@ -1,5 +1,82 @@
-.button-create-user {
-    margin-right: 3rem; // Agrega un margen derecho
+.container-fluid {
+
+  font-family: 'Roboto', sans-serif; 
+
+  .row {
+    margin-bottom: 10px;
+
+    .col-auto {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      button {
+        padding: 10px 10px;
+        border-radius: 50px;
+        font-size: 16px;
+        margin-right: 4rem;
+
+        mat-icon {
+          margin-right: 8px;
+        }
+
+        &:hover {
+          background-color: #0080ff99;
+        }
+      }
+    }
   }
 
-  
+  .row {
+    display: flex;
+    justify-content: center;
+
+    .col {
+      width: 100%;
+      max-width: 90rem; 
+      border-radius: 10px;
+      padding: 20px;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        th, td {
+          padding: 12px 15px;
+          text-align: left;
+          border-bottom: 1px solid #0000006d;
+          font-size: 16px; 
+        }
+
+        th {
+          background-color: #e9ecef; 
+          color: #495057; 
+          font-weight: bold;
+        }
+
+        td {
+          color: #2c3033;
+
+          mat-icon-button {
+            margin: 0 5px;
+
+            &:hover {
+              background-color: rgba(73, 80, 87, 0.1);
+            }
+          }
+        }
+
+        tr:hover {
+          background-color: #5b60640e;
+        }
+      }
+    }
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

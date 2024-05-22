@@ -6,7 +6,7 @@ import { IUser } from '../../layouts/dashboard/pages/users/models';
 export interface UsersState {
   users: IUser[];
   loading: boolean;
-  error: string | null;
+  error: any;
 }
 
 export const initialState: UsersState = {
