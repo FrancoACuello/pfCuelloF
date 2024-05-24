@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { IUser } from '../../layouts/dashboard/pages/users/models';
 import { LoginData } from '../../layouts/auth/models';
 import { Router } from '@angular/router';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -16,35 +17,35 @@ export class AuthService {
   };
 
   private _authUser$ = new BehaviorSubject<IUser | null>(null);
-  public authUser$ = this._authUser$.asObservable();
+  public authUser$: Observable<IUser | null> = this._authUser$.asObservable();
 
   constructor(private router: Router) {}
 
-  login(data: LoginData): void {
+  login(data: LoginData): Observable<IUser> {
     if (data.email !== 'franco@gmail.com' || data.password !== 'pepito11') {
-      alert('Correo o password incorrectos');
+      return throwError('Correo o contraseña incorrectos');
     } else {
       this._authUser$.next(this.MOCK_AUTH_USER);
-      localStorage.setItem(
-        'accessToken',
-        'asdasdasdasd123123123'
-      );
+      localStorage.setItem('accessToken', 'asdasdasdasd123123123');
       this.router.navigate(['dashboard', 'home']);
+      return of(this.MOCK_AUTH_USER);
     }
   }
 
-  verifyToken(): boolean {
+  verifyToken(): Observable<boolean> {
     const token = localStorage.getItem('accessToken');
     if (token) {
       this._authUser$.next(this.MOCK_AUTH_USER);
-      return true;
+      return of(true);
     } else {
-      return false;
+      return of(false);
     }
   }
 
-  logout(): void {
+  logout(): Observable<void> {
     this._authUser$.next(null);
     localStorage.removeItem('accessToken');
+    return of();
   }
 }
+  

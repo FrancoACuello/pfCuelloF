@@ -1,5 +1,4 @@
-// src/app/store/users/users.reducer.ts
-import { createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as UsersActions from './users.actions';
 import { IUser } from '../../layouts/dashboard/pages/users/models';
 
@@ -15,7 +14,7 @@ export const initialState: UsersState = {
   error: null,
 };
 
-export const usersReducer = createReducer(
+const _usersReducer = createReducer(
   initialState,
   on(UsersActions.loadUsers, state => ({
     ...state,
@@ -57,3 +56,7 @@ export const usersReducer = createReducer(
     error
   }))
 );
+
+export function usersReducer(state: UsersState | undefined, action: Action) {
+  return _usersReducer(state, action);
+}

@@ -1,39 +1,41 @@
 <div class="container">
   <h2>Inscribir Usuario en Curso</h2>
-  <form (ngSubmit)="enrollUser()">
-    <mat-form-field>
+  <form (ngSubmit)="enrollUser()" class="form">
+    <mat-form-field class="form-field">
       <mat-label>Usuario</mat-label>
-      <mat-select [(value)]="selectedUserId" name="user">
+      <mat-select [(value)]="selectedUserId" name="user" required>
         <mat-option *ngFor="let user of users$ | async" [value]="user.id">{{ user.firstName }} {{ user.lastName }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="form-field">
       <mat-label>Curso</mat-label>
-      <mat-select [(value)]="selectedCourseId" name="course">
+      <mat-select [(value)]="selectedCourseId" name="course" required>
         <mat-option *ngFor="let course of courses$ | async" [value]="course.id">{{ course.name }}</mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">Inscribir</button>
   </form>
 
-  <h2>Alumnos Inscritos en Cursos</h2>
-  <table mat-table [dataSource]="(enrollments$ | async) || []">
-    <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef>Nombre</th>
-      <td mat-cell *matCellDef="let enrollment">{{ getUserFirstName(enrollment.studentId) | async }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef>Apellido</th>
-      <td mat-cell *matCellDef="let enrollment">{{ getUserLastName(enrollment.studentId) | async }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="courseName">
-      <th mat-header-cell *matHeaderCellDef>Curso</th>
-      <td mat-cell *matCellDef="let enrollment">{{ getCourseName(enrollment.courseId) | async }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="['firstName', 'lastName', 'courseName']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['firstName', 'lastName', 'courseName']"></tr>
-  </table>
+  <div class="course-cards">
+    <mat-card *ngFor="let course of courses$ | async" class="course-card">
+      <mat-card-header>
+        <mat-card-title>{{ course.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <ng-container *ngIf="getEnrollmentsForCourse(course.id) | async as enrollments">
+            <li *ngFor="let enrollment of enrollments" class="enrollment-item">
+              <span>{{ getUserName(enrollment.userId) }}</span>
+              <!-- <button mat-icon-button color="primary" (click)="editEnrollment(enrollment)">
+                <mat-icon>edit</mat-icon>
+              </button> -->
+              <button mat-icon-button color="warn" (click)="deleteEnrollment(enrollment.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </li>
+          </ng-container>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

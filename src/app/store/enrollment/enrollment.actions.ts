@@ -1,7 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import { IEnrollment } from '../../layouts/dashboard/pages/enrollments/models';
 
-export const loadEnrollments = createAction('[Enrollment] Load Enrollments');
+export const loadEnrollments = createAction(
+  '[Enrollment] Load Enrollments'
+);
 
 export const loadEnrollmentsSuccess = createAction(
   '[Enrollment] Load Enrollments Success',
@@ -25,5 +27,25 @@ export const enrollStudentSuccess = createAction(
 
 export const enrollStudentFailure = createAction(
   '[Enrollment] Enroll Student Failure',
+  props<{ error: any }>()
+);
+
+export const updateEnrollment = createAction(
+  '[Enrollment] Update Enrollment',
+  props<{ enrollmentId: string, updatedEnrollment: Partial<IEnrollment> }>()
+);
+
+export const deleteEnrollment = createAction(
+  '[Enrollment] Delete Enrollment',
+  props<{ userId: string }>()
+);
+
+export const deleteEnrollmentSuccess = createAction(
+  '[Enrollment] Delete Enrollment Success',
+  props<{ userId: string }>()
+);
+
+export const deleteEnrollmentFailure = createAction(
+  '[Enrollment] Delete Enrollment Failure',
   props<{ error: any }>()
 );

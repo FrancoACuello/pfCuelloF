@@ -1,27 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { IEnrollment } from './models';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../../environments/environment';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { environment } from '../../../../../environments/environment';
+import { IEnrollment } from './models';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root',
+})
 export class EnrollmentService {
-  private enrollments: IEnrollment[] = [];
+  private baseAPIURL = environment.baseAPIURL;
 
   constructor(private http: HttpClient) {}
 
   getEnrollments(): Observable<IEnrollment[]> {
-    return this.http.get<IEnrollment[]>(`${environment.baseAPIURL}/enrollments`);
+    return this.http.get<IEnrollment[]>(`${this.baseAPIURL}/enrollments`);
   }
 
   enrollStudent(courseId: string, userId: string): Observable<IEnrollment> {
-    const enrollment = { courseId, userId };
-    return this.http.post<IEnrollment>(`${environment.baseAPIURL}/enrollments`, enrollment);
+    return this.http.post<IEnrollment>(`${this.baseAPIURL}/enrollments`, { courseId, userId });
   }
 
-  
-
+  deleteEnrollment(userId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseAPIURL}/enrollments/${userId}`).pipe(
+      catchError(error => {
+        console.error('Error deleting enrollment:', error);
+        return throwError('Error deleting enrollment');
+      })
+    );
+  }
 }

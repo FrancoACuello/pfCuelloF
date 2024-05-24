@@ -27,6 +27,13 @@
       "lastName": "D",
       "email": "goldroger@gmail.com",
       "role": "USER"
+    },
+    {
+      "id": "e30d",
+      "firstName": "Pedro",
+      "lastName": "Lopez",
+      "email": "Pedro@mail.com",
+      "role": "USER"
     }
   ],
   "courses": [
@@ -43,7 +50,7 @@
         "2"
       ],
       "duration": 34,
-      "name": "React"
+      "name": "React."
     },
     {
       "id": "102",
@@ -56,11 +63,11 @@
         "2"
       ],
       "duration": 34,
-      "name": "Angular"
+      "name": "Angular."
     },
     {
       "id": "b915",
-      "name": "Karate",
+      "name": "Karate.",
       "description": "Aprenderas a patear puertas.",
       "duration": "999",
       "instructor": "Luffy",
@@ -68,7 +75,7 @@
     },
     {
       "id": "4fda",
-      "name": "Vue",
+      "name": "Vue.",
       "description": "En este curso aprenderas Vue.",
       "duration": "34",
       "instructor": "Jose Lopez",
@@ -76,7 +83,7 @@
     },
     {
       "id": "e334",
-      "name": "Natacion",
+      "name": "Natacion.",
       "description": "Aprenderas a nadar mariposa.",
       "duration": "420",
       "instructor": "Michael Phelps",
@@ -85,14 +92,79 @@
   ],
   "enrollments": [
     {
-      "id": "4ab6",
-      "courseId": "102",
-      "studentId": "2"
+      "id": "816e",
+      "courseId": "e334",
+      "userId": "ddb0"
     },
     {
-      "id": "acb9",
-      "courseId": "102",
+      "id": "eccd",
+      "courseId": "b915",
+      "userId": "8712"
+    },
+    {
+      "id": "c4db",
+      "courseId": "4fda",
+      "userId": "1"
+    },
+    {
+      "id": "89bc",
+      "courseId": "4fda",
       "userId": "2"
+    },
+    {
+      "id": "3ced",
+      "courseId": "102",
+      "userId": "1"
+    },
+    {
+      "id": "ef7d",
+      "courseId": "b915",
+      "userId": "1"
+    },
+    {
+      "id": "0f99",
+      "courseId": "e334",
+      "userId": "1"
+    },
+    {
+      "id": "6990",
+      "courseId": "101",
+      "userId": "1"
+    },
+    {
+      "id": "12ab",
+      "courseId": "101",
+      "userId": "2"
+    },
+    {
+      "id": "a6aa",
+      "courseId": "101",
+      "userId": "8712"
+    },
+    {
+      "id": "b336",
+      "courseId": "101",
+      "userId": "ddb0"
+    },
+    {
+      "id": "f64f",
+      "courseId": "101",
+      "userId": "e30d"
+    },
+    {
+      "id": "a644",
+      "courseId": "102",
+      "userId": "e30d"
+    },
+    {
+      "id": "201a",
+      "courseId": "102",
+      "userId": "ddb0"
+    },
+    {
+      "id": "a868",
+      "courseId": "b915",
+      "userId": "e30d"
     }
   ]
 }

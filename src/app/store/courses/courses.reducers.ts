@@ -14,7 +14,7 @@ export const initialState: CoursesState = {
   error: null,
 };
 
-export const coursesReducer = createReducer(
+const _coursesReducer = createReducer(
   initialState,
   on(CoursesActions.loadCourses, state => ({ ...state, loading: true })),
   on(CoursesActions.loadCoursesSuccess, (state, { courses }) => ({ ...state, loading: false, courses })),
@@ -37,4 +37,8 @@ export const coursesReducer = createReducer(
     courses: state.courses.filter(course => course.id !== id)
   })),
   on(CoursesActions.deleteCourseFailure, (state, { error }) => ({ ...state, error }))
+
 );
+export function coursesReducer(state: CoursesState | undefined, action: Action) {
+  return _coursesReducer(state, action);
+}

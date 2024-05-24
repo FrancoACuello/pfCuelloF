@@ -6,6 +6,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { FormsModule } from '@angular/forms';
 import { EnrollmentsComponent } from './enrollments.component';
 import { SharedModule } from '../../../../shared/shared.module';
+import { enrollmentsReducer } from '../../../../store/enrollment/enrollment.reducers';
+import { EnrollmentEffects } from '../../../../store/enrollment/enrollment.effects';
 
 @NgModule({
   declarations:[
@@ -16,7 +18,9 @@ import { SharedModule } from '../../../../shared/shared.module';
     EnrollmentsRoutingModule,
     FormsModule,
     EffectsModule,StoreModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature('enrollments', enrollmentsReducer),
+    EffectsModule.forFeature([EnrollmentEffects])
   ],
   providers: [],
 })
