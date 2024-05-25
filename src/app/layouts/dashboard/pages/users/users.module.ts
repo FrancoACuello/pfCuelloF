@@ -12,12 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { FullNamePipe } from '../../../../core/pipes-y-directivas/full-name.pipe';
 @NgModule({
   declarations: [
     UsersComponent,
     UserDialogComponent,
     UserDetailComponent,
+    FullNamePipe
   ],
   imports: [
     CommonModule,
@@ -28,6 +29,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    
   ],
   exports:[UsersComponent]
 })
