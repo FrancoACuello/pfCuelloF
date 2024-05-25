@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { AuthService } from '../../core/services/auth.service';
@@ -13,8 +12,8 @@ export class AuthEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.login),
-      mergeMap(({ data }) =>
-        this.authService.login(data).pipe(
+      mergeMap(({ loginData }) =>
+        this.authService.login(loginData).pipe(
           map((user) => AuthActions.loginSuccess({ user })),
           catchError((error) => of(AuthActions.loginFailure({ error })))
         )
@@ -28,7 +27,6 @@ export class AuthEffects {
       mergeMap(() =>
         this.authService.logout().pipe(
           map(() => {
-            // Aquí podrías redirigir a la página de inicio de sesión, por ejemplo
             return { type: 'No action needed' };
           })
         )

@@ -1,27 +1,26 @@
-<main style="height: 100vh; background-color: rgb(0, 0, 0); display: flex; justify-content: center; align-items: center;">
-  <div class="w-6">
-    <mat-card style="max-width: 400px;">
+<main class="login-container">
+  <div class="login-card">
+    <mat-card>
       <mat-card-header>
-        <mat-card-title style="text-align: center;"> Iniciar sesión </mat-card-title>
+        <mat-card-title>Iniciar sesión</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="login()">
-          <div style="margin-bottom: 1rem;">
-            <mat-form-field class="w-100">
+          <div class="form-field">
+            <mat-form-field class="full-width">
               <mat-label>Email</mat-label>
               <input formControlName="email" matInput />
             </mat-form-field>
           </div>
-          <div style="margin-bottom: 1rem;">
-            <mat-form-field class="w-100">
+          <div class="form-field">
+            <mat-form-field class="full-width">
               <mat-label>Password</mat-label>
               <input formControlName="password" matInput type="password" />
             </mat-form-field>
           </div>
-          <button type="submit" color="primary" mat-flat-button style="width: 100%;">Iniciar sesión</button>
+          <button type="submit" color="primary" mat-flat-button class="full-width">Iniciar sesión</button>
         </form>
       </mat-card-content>
     </mat-card>
   </div>
 </main>
-  

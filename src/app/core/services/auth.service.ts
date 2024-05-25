@@ -10,7 +10,7 @@ export class AuthService {
   private MOCK_AUTH_USER: IUser = {
     id: '1',
     createdAt: new Date(),
-    email: 'franco@gmail.com',
+    email: 'franco@mail.com',
     firstName: 'Franco',
     lastName: 'Cuello',
     role: 'ADMIN',
@@ -22,7 +22,7 @@ export class AuthService {
   constructor(private router: Router) {}
 
   login(data: LoginData): Observable<IUser> {
-    if (data.email !== 'franco@gmail.com' || data.password !== 'pepito11') {
+    if (data.email !== 'franco@mail.com' || data.password !== 'pepito') {
       return throwError('Correo o contraseña incorrectos');
     } else {
       this._authUser$.next(this.MOCK_AUTH_USER);

@@ -26,6 +26,7 @@ import { CoursesEffects } from './store/courses/courses.effects';
 import { EnrollmentEffects } from './store/enrollment/enrollment.effects';
 
 import { ROOT_REDUCERS } from './store';
+import { AuthEffects } from './store/auth/auth.effects';
 
 @NgModule({
   declarations: [AppComponent,],
@@ -40,7 +41,7 @@ import { ROOT_REDUCERS } from './store';
    AuthRoutingModule,
    MatProgressSpinnerModule,
    StoreModule.forRoot(ROOT_REDUCERS),
-   EffectsModule.forRoot([UsersEffects, CoursesEffects, EnrollmentEffects ]),
+   EffectsModule.forRoot([UsersEffects, CoursesEffects, EnrollmentEffects,AuthEffects ]),
    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [

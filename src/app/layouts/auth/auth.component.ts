@@ -1,22 +1,24 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { AppState } from '../../store';
+import { login } from '../../store/auth/auth.actions';
+import { selectAuthError } from '../../store/auth/auth.selectors';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector:'app-auth',
-  templateUrl:'./auth.component.html',
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
-
 export class AuthComponent implements OnDestroy, OnInit {
   loginForm: FormGroup;
+  private subscriptions: Subscription[] = [];
 
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private store: Store<AppState>
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -24,16 +26,29 @@ export class AuthComponent implements OnDestroy, OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscriptions.push(
+      this.store.select(selectAuthError).subscribe((error) => {
+        if (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Estos datos no son correctos, intente de nuevo'
+          });
+        }
+      })
+    );
+  }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
 
   login() {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
-      this.authService.login(this.loginForm.getRawValue());
+      this.store.dispatch(login({ loginData: this.loginForm.getRawValue() }));
     }
   }
 }
-

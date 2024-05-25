@@ -112,11 +112,6 @@
       "userId": "2"
     },
     {
-      "id": "3ced",
-      "courseId": "102",
-      "userId": "1"
-    },
-    {
       "id": "ef7d",
       "courseId": "b915",
       "userId": "1"
@@ -127,33 +122,13 @@
       "userId": "1"
     },
     {
-      "id": "6990",
-      "courseId": "101",
-      "userId": "1"
-    },
-    {
-      "id": "12ab",
-      "courseId": "101",
-      "userId": "2"
-    },
-    {
       "id": "a6aa",
       "courseId": "101",
       "userId": "8712"
     },
     {
-      "id": "b336",
-      "courseId": "101",
-      "userId": "ddb0"
-    },
-    {
       "id": "f64f",
       "courseId": "101",
-      "userId": "e30d"
-    },
-    {
-      "id": "a644",
-      "courseId": "102",
       "userId": "e30d"
     },
     {
@@ -165,6 +140,11 @@
       "id": "a868",
       "courseId": "b915",
       "userId": "e30d"
+    },
+    {
+      "id": "df80",
+      "courseId": "102",
+      "userId": "2"
     }
   ]
 }
