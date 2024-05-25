@@ -50,7 +50,7 @@ describe('UsersService', () => {
       firstName: 'TEST',
       lastName: 'TEST',
       role: 'ADMIN',
-      id: 12312,
+      id: '',
     };
 
     usersService.createUser(payload).subscribe((resp) => {

@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { of, throwError } from 'rxjs';
 
 describe('AuthService', () => {
   let authService: AuthService;
@@ -8,33 +9,37 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService,(Router)],
+      providers: [
+        AuthService,
+        {
+          provide: Router,
+          useValue: { navigate: jasmine.createSpy('navigate') }
+        }
+      ]
     });
     authService = TestBed.inject(AuthService);
     router = TestBed.inject(Router);
   });
 
-  it('Debe establecer un usuario autenticado al llamar login', () => {
-    const spyOnSetItem = spyOn(localStorage, 'setItem');
-    const spyOnNavigate = spyOn(router, 'navigate');
-    authService.login({
-      email: 'franco@gmail.com',
-      password: 'pepito11',
-    });
-    authService.authUser$.subscribe({
-      next: (authUser) => {
-        expect(authUser).toBeTruthy(); 
-        expect(spyOnSetItem).toHaveBeenCalled();
-        expect(spyOnNavigate).toHaveBeenCalled();
-      },
-    });
-  });
-
-  it('Debe mostrar un alert con el texto "Correo o password incorrectos" si los datos no coinciden en el login', () => {
-    const spyOnAlert = spyOn(window, 'alert');
+  it('Debe emitir un error si los datos de inicio de sesión son incorrectos', (done) => {
     authService.login({
       email: 'falso@email.com',
-      password: 'asdasdasd',
+      password: 'asdasdasd'
+    }).subscribe({
+      next: () => {},
+      error: (error) => {
+        expect(error).toBe('Correo o contraseña incorrectos');
+        done();
+      }
+    });
+  });
+  
+
+
+  it('Debe eliminar el token de acceso después de cerrar sesión', () => {
+    spyOn(localStorage, 'removeItem');
+    authService.logout().subscribe(() => {
+      expect(localStorage.removeItem).toHaveBeenCalledWith('accessToken');
     });
   });
 });

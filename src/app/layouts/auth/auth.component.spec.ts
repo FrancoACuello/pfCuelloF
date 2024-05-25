@@ -1,63 +1,75 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { Store, StoreModule } from '@ngrx/store';
 import { AuthComponent } from './auth.component';
-import { MatCardModule } from '@angular/material/card';
-import { SharedModule } from '../../shared/shared.module';
-import { AuthService } from '../../core/services/auth.service';
+import { AppState } from '../../store';
+import { login } from '../../store/auth/auth.actions';
+import { selectAuthError } from '../../store/auth/auth.selectors';
+import Swal from 'sweetalert2';
+import { of } from 'rxjs';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
   let fixture: ComponentFixture<AuthComponent>;
-  let authService: AuthService;
+  let store: Store<AppState>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [AuthComponent],
-      imports: [SharedModule, BrowserAnimationsModule],
+      imports: [
+        ReactiveFormsModule,
+        StoreModule.forRoot({}, {
+          runtimeChecks: {
+            strictStateImmutability: false,
+            strictActionImmutability: false
+          }
+        })
+      ]
     }).compileComponents();
 
+    store = TestBed.inject(Store);
     fixture = TestBed.createComponent(AuthComponent);
     component = fixture.componentInstance;
-
-    authService = TestBed.inject(AuthService);
-
     fixture.detectChanges();
   });
 
-  it('El campo email debe ser requerido', () => {
-    const control = component.loginForm.get('email');
-    control?.setValue('');
-    expect(control?.hasError('required')).toBeTrue();
+  afterEach(() => {
+    fixture.destroy();
   });
 
-  it('El campo password debe ser requerido', () => {
-    const control = component.loginForm.get('password');
-    control?.setValue('');
-    expect(control?.hasError('required')).toBeTrue();
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
   });
 
-  it('Debe llamar markAllAsTouched de loginForm al llamar login, si el formulario es invalido', () => {
+  it('should create login form with required fields', () => {
+    const emailControl = component.loginForm.get('email');
+    const passwordControl = component.loginForm.get('password');
+    expect(emailControl).toBeTruthy();
+    expect(passwordControl).toBeTruthy();
+    expect(emailControl?.validator).toBe(Validators.required);
+    expect(passwordControl?.validator).toBe(Validators.required);
+  });
+
+  it('should mark all form fields as touched when login with invalid form', () => {
+    const loginSpy = spyOn(store, 'dispatch');
     component.loginForm.setValue({
       email: '',
-      password: '',
+      password: ''
     });
-    expect(component.loginForm.invalid).toBeTrue();
-    const spyOnMarkAllAsTouched = spyOn(
-      component.loginForm,
-      'markAllAsTouched'
-    );
     component.login();
-    expect(spyOnMarkAllAsTouched).toHaveBeenCalled();
+    expect(loginSpy).not.toHaveBeenCalled();
+    expect(component.loginForm.get('email')?.touched).toBeTrue();
+    expect(component.loginForm.get('password')?.touched).toBeTrue();
   });
 
-  it('Debe llamar a authService.login si el formulario es valido al llamar login', () => {
+  it('should dispatch login action when login with valid form', () => {
+    const loginSpy = spyOn(store, 'dispatch');
     component.loginForm.setValue({
-      email: 'email@mail.com',
-      password: '123456',
+      email: 'test@example.com',
+      password: 'password'
     });
-    expect(component.loginForm.valid).toBeTrue();
-    const spyOnLogin = spyOn(authService, 'login');
     component.login();
-    expect(spyOnLogin).toHaveBeenCalled();
+    expect(loginSpy).toHaveBeenCalledWith(login({ loginData: { email: 'test@example.com', password: 'password' } }));
   });
+
 });

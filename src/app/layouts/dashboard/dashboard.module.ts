@@ -9,7 +9,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { UsersModule } from './pages/users/users.module';
-import { PipesYDirectivasModule } from '../../core/pipes-y-directivas/pipes-y-directivas.module';
 import { SharedModule } from '../../shared/shared.module';
 import { UserListModule } from './pages/users/user-list/user-list.module'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -32,7 +31,6 @@ import { EnrollmentsModule } from './pages/enrollments/enrollments.module';
     MatIconModule,
     MatButtonModule,
     UsersModule,
-    PipesYDirectivasModule,
     SharedModule,
     UserListModule,
     MatProgressSpinnerModule,
